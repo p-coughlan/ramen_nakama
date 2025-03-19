@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product
+from .models import Product, Category
 
 # Create your views here.
 
@@ -10,10 +10,14 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
+    categories = None
 
-# If there is a query in the request.GET dictionary, then we check if the query is empty. If it is, we display an error message and redirect the user back to the products page. If the query is not empty, we filter the products by the query and display the results.
-# If there is no query in the request.GET dictionary, we display all products.
     if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -26,6 +30,7 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
+        'current_categories': categories,
     }
 
     return render(request, 'products/products.html', context)
