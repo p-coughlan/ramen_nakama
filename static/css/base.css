@@ -70,6 +70,12 @@ body {
     z-index: -1;
 }
 
+/* Invert the color of the badge on hover */
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
 
 /* -------------------------------- Media Queries */
 
