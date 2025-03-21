@@ -40,10 +40,9 @@ body {
 
 .btn-outline-black {
     background: white;
-    color: black !important; /* use important to overide link colours for <a> elements */
+    color: black !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
 }
-
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
@@ -74,16 +73,15 @@ body {
 }
 
 .overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: white;
-    z-index: -1;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
 }
 
-/* Invert the color of the badge on hover */
 a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
@@ -102,6 +100,24 @@ a.category-badge > span.badge:hover {
 .remove-item {
     cursor: pointer;
 }
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 
 /* -------------------------------- Media Queries */
 
@@ -127,7 +143,7 @@ a.category-badge > span.badge:hover {
     }
 }
 
-/* pad the top when navbar is collpased on mobile */
+/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
