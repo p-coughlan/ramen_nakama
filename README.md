@@ -243,3 +243,15 @@ Special thanks to:
 - **Mentor/Advisor 1:** Placeholder name and role.
 - **Mentor/Advisor 2:** Placeholder name and role.
 - **Team Members:** Placeholder names.
+
+------------------------------------
+NOTES:
+
+Webhook testing: https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+BA101N+4/courseware/4201818c00aa4ba3a0dae243725f6e32/09698fc21d8045c79a5d639c90df8cec/?child=first
+
+Stripe Triggers:
+stripe trigger payment_intent.created
+stripe trigger payment_intent.succeeded
+stripe trigger payment_intent.payment_failed
+stripe trigger charge.succeeded
+stripe trigger charge.failed
