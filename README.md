@@ -255,3 +255,9 @@ stripe trigger payment_intent.succeeded
 stripe trigger payment_intent.payment_failed
 stripe trigger charge.succeeded
 stripe trigger charge.failed
+
+Extra model ideas:
+Review
+Wishlist
+Mailing List
+How did you hear about us
