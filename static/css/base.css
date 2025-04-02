@@ -11,6 +11,10 @@ body {
     font-family: 'Skia';
 }
 
+.banner {
+    background-color: #86070b !important;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
