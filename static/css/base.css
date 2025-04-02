@@ -3,11 +3,12 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: linear-gradient(to right, rgba(47, 44, 45, 1), rgba(0, 0, 0, 0)), 
+                url('/media/hero.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Skia';
 }
 
 /* from Bulma */
