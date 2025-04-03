@@ -56,7 +56,7 @@
                         {% if s %}
                         <div class="col-12">
                             <p><strong>Size:</strong></p>
-                            <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                            <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
                                 <option value="xs">XS</option>
                                 <option value="s">S</option>
                                 <option value="m" selected>M</option>
@@ -97,7 +97,19 @@
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                            {% comment %} Insertion: Conditional display for "Add to Bag" based on order status {% endcomment %}
+                            {% if order_window and order_window.is_open %}
+                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                            {% else %}
+                                <div class="alert alert-info mt-5">
+                                    Ordering is currently closed.
+                                    {% if order_window and order_window.next_delivery_date %}
+                                        Next delivery: {{ order_window.next_delivery_date|date:"F j, Y" }}.
+                                    {% else %}
+                                        Please check back later.
+                                    {% endif %}
+                                </div>
+                            {% endif %}
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% endwith %}

@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
-
+    'ordercontrol',
     # Other apps
     'crispy_forms',
     'storages',
@@ -94,6 +94,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents', # custom context processor
+                'ordercontrol.context_processors.order_status', # custom context processor
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
