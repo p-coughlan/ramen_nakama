@@ -88,6 +88,22 @@ body {
 	z-index: -1;
 }
 
+.sold-out-overlay {
+    position: relative;
+    opacity: 0.5; /* greys out the product image */
+}
+.sold-out-overlay::after {
+    content: "Sold Out";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
 a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;

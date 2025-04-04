@@ -15,15 +15,17 @@
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
             <div class="image-container my-5">
-                {% if product.image %}
-                <a href="{{ product.image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                </a>
-                {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                </a>
-                {% endif %}
+                <div class="product-image-container {% if product.sold_out %}sold-out-overlay{% endif %}">
+                    {% if product.image %}
+                    <a href="{{ product.image.url }}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                    {% else %}
+                    <a href="">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -97,17 +99,21 @@
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            {% comment %} Insertion: Conditional display for "Add to Bag" based on order status {% endcomment %}
-                            {% if order_window and order_window.is_open %}
+                            {% comment %} Insertion: Conditional display for "Add to Bag" based on order status and product availability {% endcomment %}
+                            {% if order_window and order_window.is_ordering_active and not product.sold_out %}
                                 <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
                             {% else %}
                                 <div class="alert alert-info mt-5">
-                                    Ordering is currently closed.
-                                    {% if order_window and order_window.next_delivery_date %}
-                                        Next delivery: {{ order_window.next_delivery_date|date:"F j, Y" }}.
+                                    {% if product.sold_out %}
+                                        This product is currently sold out.
                                     {% else %}
-                                        Please check back later.
-                                    {% endif %}
+                                        Ordering is currently closed.
+                                        {% if order_window and order_window.next_delivery_date %}
+                                            Next delivery: {{ order_window.next_delivery_date|date:"F j, Y" }}.
+                                        {% else %}
+                                            Please check back later.
+                                        {% endif %}
+                                    {% endif %}  {# <-- Added missing endif for product.sold_out condition #}
                                 </div>
                             {% endif %}
                         </div>

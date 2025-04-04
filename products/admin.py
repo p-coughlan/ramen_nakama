@@ -11,7 +11,10 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'rating',
         'image',
+        'sold_out',
     )
+
+    list_editable = ['sold_out']  # Allows quick toggling from the list view
 
     ordering = ('sku',)
 
