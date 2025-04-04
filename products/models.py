@@ -34,6 +34,7 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    sold_out = models.BooleanField(default=False, help_text="Mark as sold out or unavailable.")
 
     def __str__(self):
         """ Returns the name of the product """
