@@ -36,7 +36,7 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="merch-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="merch-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong>Merchandise</strong>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="merch-link">
@@ -45,5 +45,15 @@
                 <a href="{% url 'products' %}?category=t_shirts,tea_towels" class="dropdown-item">All Merchandise</a>
             </div>
         </li>
+
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'account_login' %}?next={% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+            </li>
+        {% endif %}
     </ul>
 </div>
