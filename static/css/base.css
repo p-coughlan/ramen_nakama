@@ -195,6 +195,10 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
+.hidden-review {
+    display: none;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -348,3 +352,19 @@ input[name='q']::placeholder {
         padding: .25rem .5rem !important;
     }
 }
+
+/* Media query for footer */
+@media (min-width: 992px) {
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #f8f9fa; /* ensure background matches your design */
+    }
+    body {
+      padding-bottom: 60px; /* adjust this value to your footer's height */
+    }
+  }
+  

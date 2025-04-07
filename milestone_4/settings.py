@@ -96,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents', # custom context processor
                 'ordercontrol.context_processors.order_status', # custom context processor
+                'reviews.context_processors.approved_reviews', # custom context processor
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
