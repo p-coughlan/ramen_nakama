@@ -11,27 +11,27 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100 mt-3"> <!-- Added mt-3 for spacing -->
-        <div class="row h-100">
-            <div class="col-12 col-md-6 my-auto"> <!-- Change col-7 to col-12 for mobile -->
-                <h1 class="display-4 logo-font text-white">
-                    <strong>Delivering Bristol's Best Ramen to your Door!</strong>
-                </h1>
-                <h4 class="text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </h4>
-                {% if order_window %}
-                    <div class="alert alert-info text-center my-3">
-                        {{ order_window.ordering_message }}
-                    </div>
-                {% endif %}
-
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-1 text-uppercase py-3">Slurp Now</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
+  <div class="container h-100 mt-3">
+    <div class="row h-100">
+      <!-- Left column: Headline, description, etc. -->
+      <div class="col-12 col-md-6 mt-5 my-auto">
+        <h1 class="display-4 logo-font text-white">
+          <strong>Delivering Bristol's Best Ramen to your Door!</strong>
+        </h1>
+        <h4 class="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        {% if order_window %}
+          <div class="alert alert-info text-center my-3">
+            {{ order_window.ordering_message }}
+          </div>
+        {% endif %}
+      </div>
+      <!-- Right column: Shop Now button -->
+      <div class="col-12 col-md-6 mt-5 text-md-right text-center">
+        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-1 text-uppercase py-3">
+          Slurp Now!
+        </a>
+      </div>
     </div>
+  </div>
 {% endblock %}

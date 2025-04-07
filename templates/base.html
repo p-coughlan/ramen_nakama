@@ -154,13 +154,13 @@
   </div>
 
   {# FOOTER: Always visible; on desktop it is fixed, on mobile it flows normally #}
-  <footer class="container-fluid bg-light text-dark py-3">
+  <footer class="container-fluid text-light py-3">
     <div class="container">
       <div class="row align-items-center">
         {# Reviews Column: Hidden on mobile, visible on large screens #}
         <div class="col-12 col-lg-8 d-none d-lg-block">
           {% if approved_reviews %}
-            <div id="review-ticker" class="bg-light py-2">
+            <div id="review-ticker" class="py-2">
               {% for review in approved_reviews %}
                 <div class="review-item {% if not forloop.first %}hidden-review{% endif %}">
                   {{ review.review_text }} - <strong>{{ review.user.username }}</strong>
@@ -172,12 +172,12 @@
           {% endif %}
         </div>
         {# Social Media Links Column: Always visible, centered on mobile and right-aligned on large screens #}
-        <div class="col-12 col-lg-4 text-center text-lg-right mt-3 mt-lg-0">
+        <div class="col-12 col-lg-4 text-right text-light mt-3 mt-lg-0">
           <a href="https://www.instagram.com/yourhandle" target="_blank" class="mx-2">
-            <i class="fab fa-instagram fa-2x"></i>
+            <i class="fab fa-instagram fa-2x text-light"></i>
           </a>
           <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="mx-2">
-            <i class="fab fa-whatsapp fa-2x"></i>
+            <i class="fab fa-whatsapp fa-2x text-light"></i>
           </a>
         </div>
       </div>
