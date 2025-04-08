@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     /* Background with a hero image and gradient overlay */
-    background: linear-gradient(to right, rgba(47, 44, 45, 1), rgba(0, 0, 0, 0)),
+    background: linear-gradient(to right, rgba(36, 35, 40, 1), rgba(0, 0, 0, 0)),
                 url('/media/hero.jpg') no-repeat center center fixed;
     background-size: cover;
     /* Removed fixed height; using min-height for flexibility */
@@ -73,6 +73,11 @@ body {
     color: white;
 }
 
+.order-status {
+    background: #e87a0f !important;
+    color: white;
+    border: 1px solid #000;
+}
 /* ------------------------------- Text & Borders ------------------------------- */
 
 .text-black {
@@ -377,5 +382,9 @@ input[name='q']::placeholder {
 /* ------------------------------- Miscellaneous ------------------------------- */
 
 .display-4 {
-    margin-top: 2rem; /* Adjust value as needed */
+    margin-top: 3rem; /* Adjust value as needed */
   }
+
+/* Ramen Blue #1e234d, rgb(30, 35, 77) */
+/* Ramen Pink #e75b66, rgb(231, 91, 102) */
+/* Ramen Yellow #fde9d0, rgb(253, 233, 208) */
