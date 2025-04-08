@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     /* Background with a hero image and gradient overlay */
-    background: linear-gradient(to right, rgba(36, 35, 40, 1), rgba(0, 0, 0, 0)),
+    background: linear-gradient(120deg, rgba(30, 35, 77, 1), rgba(0, 0, 0, 0)),
                 url('/media/hero.jpg') no-repeat center center fixed;
     background-size: cover;
     /* Removed fixed height; using min-height for flexibility */
@@ -26,7 +26,7 @@ body {
 /* ------------------------------- Banner & Logo ------------------------------- */
 
 .banner {
-    background-color: #86070b !important;
+    background-color: #e75b66 !important;
 }
 
 .logo-font {
@@ -74,7 +74,7 @@ body {
 }
 
 .order-status {
-    background: #e87a0f !important;
+    background: #e87a0f !important; /* DELETE THIS */
     color: white;
     border: 1px solid #000;
 }
@@ -96,7 +96,7 @@ body {
     top: 0;
     left: 0;
     position: fixed;
-    background: white;
+    background: #fde9d0;
     z-index: -1;
 }
 
@@ -225,7 +225,7 @@ input[name='q']::placeholder {
 .allauth-form-inner-content input[type='submit'] {
     display: inline-block;
     font-weight: 400;
-    color: #fff;
+    color: #F5F5F5;
     text-align: center;
     vertical-align: middle;
     user-select: none;
@@ -241,7 +241,7 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
-    color: #fff;
+    color: #F5F5F5;
     background-color: #222;
     border-color: #222;
 }
@@ -359,7 +359,7 @@ input[name='q']::placeholder {
   footer {
     position: relative;
     z-index: 1000;
-    background-color: #86070b !important;
+    background-color: #e75b66 !important;
     padding: 1rem 0;
   }
 }
@@ -372,7 +372,7 @@ input[name='q']::placeholder {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #86070b !important;
+    background-color: #e75b66 !important;
   }
   body {
     padding-bottom: 60px; /* Adjust to match the footer's height */
@@ -384,6 +384,17 @@ input[name='q']::placeholder {
 .display-4 {
     margin-top: 3rem; /* Adjust value as needed */
   }
+
+/* IMPORTANT OVERRIDE */
+.bg-white,
+.bg-light,
+.card-body{
+    background-color: #fde9d0 !important;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px #1e234d;
+}
 
 /* Ramen Blue #1e234d, rgb(30, 35, 77) */
 /* Ramen Pink #e75b66, rgb(231, 91, 102) */
