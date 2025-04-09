@@ -392,8 +392,17 @@ input[name='q']::placeholder {
     background-color: #fde9d0 !important;
 }
 
-h1 {
-    text-shadow: 2px 2px 4px #1e234d;
+.main-page-content {
+    text-shadow: 1px 1px 1px black
+}
+
+.nav-font {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 1px white
+}
+
+.main-logo {
+    text-shadow: 1px 1px 1px white
 }
 
 /* Ramen Blue #1e234d, rgb(30, 35, 77) */

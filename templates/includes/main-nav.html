@@ -6,8 +6,8 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>All Products</strong>
+            <a class="nav-font logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <strong>Everything Ramen</strong>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
@@ -18,7 +18,7 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="ramen-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-font logo-font font-weight-bold nav-link text-black mr-5" href="#" id="ramen-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong>Ramen</strong>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="ramen-link">
@@ -30,13 +30,13 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}?category=sides" id="sides-link" data-toggle="" aria-haspopup="" aria-expanded="false">
+            <a class="nav-font logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}?category=sides" id="sides-link" data-toggle="" aria-haspopup="" aria-expanded="false">
                 <strong>Sides</strong>
             </a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="merch-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-font logo-font font-weight-bold nav-link text-black mr-5" href="#" id="merch-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong>Merchandise</strong>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="merch-link">
@@ -48,11 +48,11 @@
 
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'submit_review' %}"><strong>Leave a Review</strong></a>
             </li>
         {% else %}
             <li class="nav-item">
-                <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'account_login' %}?next={% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'account_login' %}?next={% url 'submit_review' %}"><strong>Leave a Review</strong></a>
             </li>
         {% endif %}
     </ul>
