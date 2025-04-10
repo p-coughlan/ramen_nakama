@@ -11,17 +11,51 @@ body {
     min-height: 100vh;
     /* Background with a hero image and gradient overlay */
     background: linear-gradient(130deg, rgba(30, 35, 77, 1) 25%, rgba(255, 255, 255, 0.6)),
-                url('/media/hero.jpg') no-repeat center center fixed;
+                url('/media/hero.jpg') no-repeat center center;
+    background-attachment: fixed; /* Background stays fixed */
     background-size: cover;
-    /* Removed fixed height; using min-height for flexibility */
     color: #555;
     font-family: 'Skia';
 }
 
-/* Main content should expand to push the footer to the bottom */
+/* Main content expands to push the footer to the bottom */
 .main-content {
     flex: 1;
 }
+
+/* ------------------------- Order Status & Shop Now ------------------------- */
+
+/* Container for Order Status Text & Shop Now Button */
+.order-status-container {
+    background-color: #fde9d0;  /* Ramen Yellow */
+    padding: 20px;
+    border: 2px solid #000;     /* Bold border */
+    border-radius: 5px;
+}
+
+/* Order Status Text, left aligned */
+.order-status-message {
+    font-size: 1.5rem;          /* Increased font size */
+    color: #1e234d;             /* Ramen Blue */
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Circular Shop Now Button */
+.shop-now-circle {
+    background-color: #e75b66;  /* Ramen Pink */
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    text-decoration: none;
+    font-size: 1rem;
+    border: 4px solid #1e234d;  /* Border in Ramen Blue */
+}
+
 
 /* ------------------------------- Banner & Logo ------------------------------- */
 
@@ -39,11 +73,13 @@ body {
 
 /* ------------------------------- Buttons ------------------------------- */
 
+/* Old Shop Now Button styling (Not used in new design) 
 .shop-now-button {
     background: black;
     color: white;
     min-width: 260px;
 }
+*/
 
 .btn-black {
     background: black;
@@ -52,7 +88,7 @@ body {
 
 .btn-outline-black {
     background: white;
-    color: black !important; /* override link colors for <a> elements */
+    color: black !important;
     border: 1px solid black;
 }
 
@@ -63,9 +99,6 @@ body {
     color: white !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
@@ -73,11 +106,6 @@ body {
     color: white;
 }
 
-.order-status {
-    background: #e87a0f !important; /* DELETE THIS */
-    color: white;
-    border: 1px solid #000;
-}
 /* ------------------------------- Text & Borders ------------------------------- */
 
 .text-black {
@@ -100,11 +128,11 @@ body {
     z-index: -1;
 }
 
-/* ------------------------------- Sold Out Styling ------------------------------- */
+/* --------------------------- Sold Out Styling --------------------------- */
 
 .sold-out-overlay {
     position: relative;
-    opacity: 0.5; /* greys out the product image */
+    opacity: 0.5; /* Greys out the product image */
 }
 
 .sold-out-overlay::after {
@@ -121,19 +149,18 @@ body {
 /* ------------------------------- Utility Classes ------------------------------- */
 
 .icon {
-    align-items: center;
     display: inline-flex;
+    align-items: center;
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
 }
 
-/* Hide elements (used for review ticker items) */
 .hidden-review {
     display: none;
 }
 
-/* ------------------------------- Component Overrides ------------------------------- */
+/* --------------------------- Component Overrides --------------------------- */
 
 /* Category badge hover effect */
 a.category-badge > span.badge:hover {
@@ -162,7 +189,7 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-/* ------------------------------- Bootstrap Toasts ------------------------------- */
+/* --------------------------- Bootstrap Toasts --------------------------- */
 
 .message-container {
     position: fixed;
@@ -179,7 +206,7 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
-/* ------------------------------- CSS Triangle (Arrows) ------------------------------- */
+/* --------------------------- CSS Triangle (Arrows) --------------------------- */
 
 .arrow-up {
     width: 0; 
@@ -201,11 +228,11 @@ input[name='q']::placeholder {
 .arrow-light { border-bottom-color: #f8f9fa !important; }
 .arrow-dark { border-bottom-color: #343a40 !important; }
 
-/* ------------------------------- Allauth Form Styling ------------------------------- */
+/* --------------------------- Allauth Form Styling --------------------------- */
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
 .allauth-form-inner-content input {
@@ -240,17 +267,17 @@ input[name='q']::placeholder {
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
+.allauth-form-inner-content input[type='submit']:hover {
     color: #F5F5F5;
     background-color: #222;
     border-color: #222;
 }
 
 .allauth-form-inner-content a {
-    color: #17a2b8; /* text-info */
+    color: #17a2b8;
 }
 
-/* ------------------------------- Product Form ------------------------------- */
+/* --------------------------- Product Form --------------------------- */
 
 .btn-file {
     position: relative;
@@ -278,16 +305,16 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
-/* ------------------------------- Responsive Layout ------------------------------- */
+/* --------------------------- Responsive Layout --------------------------- */
 
 /* Adjust container width for extra large screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
-/* Fixed top navbar only on medium and up */
+/* Fixed top navbar for medium and larger screens */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -311,8 +338,6 @@ input[name='q']::placeholder {
     body {
         padding-right: 10px;
         padding-left: 10px;
-        /* Adjust height for mobile header */
-        /* Note: Using min-height in body now, so removed fixed calc() */
     }
 
     .display-4.logo-font.text-black {
@@ -328,67 +353,66 @@ input[name='q']::placeholder {
     }
 
     .navbar-toggler {
-        padding: .6rem .6rem;
+        padding: 0.6rem;
         font-size: 1rem;
     }
 
     #delivery-banner h4 {
-        font-size: .9rem;
+        font-size: 0.9rem;
     }
 
     .btn.btn-outline-black.rounded-0,
     .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
+        padding: 0.375rem;
     }
 
     .btn.btn-outline-black.rounded-0.btn-lg,
     .btn.btn-black.rounded-0.btn-lg {
-        padding: .375rem .375rem;
-        font-size: .75rem;
+        padding: 0.375rem;
+        font-size: 0.75rem;
     }
 
     .increment-qty, .decrement-qty {
-        padding: .25rem .5rem !important;
+        padding: 0.25rem 0.5rem !important;
     }
 }
 
-/* ------------------------------- Footer Styles ------------------------------- */
+/* --------------------------- Footer Styles --------------------------- */
 
-/* Footer on mobile: normal flow, ensure it appears above overlapping fixed elements */
+/* Mobile Footer: normal flow */
 @media (max-width: 991px) {
-  footer {
-    position: relative;
-    z-index: 1000;
-    background-color: #e75b66 !important;
-    padding: 1rem 0;
-  }
+    footer {
+        position: relative;
+        z-index: 1000;
+        background-color: #e75b66 !important;
+        padding: 1rem 0;
+    }
 }
 
-/* Footer on larger screens: fixed at the bottom */
+/* Desktop Footer: fixed at the bottom */
 @media (min-width: 992px) {
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #e75b66 !important;
-  }
-  body {
-    padding-bottom: 60px; /* Adjust to match the footer's height */
-  }
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background-color: #e75b66 !important;
+    }
+    body {
+        padding-bottom: 60px;
+    }
 }
 
-/* ------------------------------- Miscellaneous ------------------------------- */
+/* --------------------------- Miscellaneous --------------------------- */
 
 .display-4 {
-    margin-top: 3rem; /* Adjust value as needed */
-  }
+    margin-top: 3rem;
+}
 
-/* IMPORTANT OVERRIDE */
 .bg-white,
 .bg-light,
-.card-body{
+.card-body {
     background-color: #fde9d0 !important;
 }
 
@@ -397,9 +421,11 @@ h1 {
 }
 
 .main-logo {
-    text-shadow: 1px 1px 1px white
+    text-shadow: 1px 1px 1px white;
 }
 
-/* Ramen Blue #1e234d, rgb(30, 35, 77) */
-/* Ramen Pink #e75b66, rgb(231, 91, 102) */
-/* Ramen Yellow #fde9d0, rgb(253, 233, 208) */
+/* Color Palette Notes:
+   Ramen Blue  : #1e234d  (rgb(30, 35, 77))
+   Ramen Pink  : #e75b66  (rgb(231, 91, 102))
+   Ramen Yellow: #fde9d0  (rgb(253, 233, 208))
+*/

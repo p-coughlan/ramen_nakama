@@ -3,35 +3,76 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+  <div class="container header-container">
+    <div class="row">
+      <div class="col"></div>
     </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-  <div class="container h-100 mt-3">
-    <div class="row h-100">
-      <!-- Left column: Headline, description, etc. -->
-      <div class="col-12 col-md-6 mt-5 my-auto">
-        <h1 class="main-page-content display-4 logo-font text-light">
+  <div class="container mt-1">
+    <!-- Full-Width Headline, Left Aligned -->
+    <div class="row">
+      <div class="col-12 mt-3">
+        <h1 class="main-page-content display-4 logo-font text-light text-left">
           <strong>Delivering Bristol's Best Ramen to your Door!</strong>
         </h1>
-        <h4 class="text-white mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        {% if order_window %}
-          <div class="alert alert-info text-center my-3 mt-5"> <!-- Previuosly order-status -->
-            {{ order_window.ordering_message }}
+      </div>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="row mt-4">
+      <!-- Left Column: Description and News Section -->
+      <div class="col-12 col-md-6">
+        <h4 class="text-white">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </h4>
+        <!-- News Section -->
+        <div class="news-section mt-4">
+          <h4 class="text-white"><strong>Ramen</strong> Nakama News</h4>
+          {% if news %}
+            <div class="news-content">
+              {{ news }}
+            </div>
+          {% else %}
+            <div class="card bg-dark text-black mb-5">
+              <img src="media/Scrandit.jpg" alt="News Image" class="card-img-top img-fluid">
+              <div class="card-body">
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                </p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- Right Column: Order Status and Shop Now Container -->
+      <div class="col-12 col-md-6">
+        <div class="order-status-container">
+          <div class="row align-items-center">
+            <!-- Order status text (approx. 66% width) -->
+            <div class="col-8">
+              {% if order_window %}
+                <div class="order-status-message">
+                  {{ order_window.ordering_message }}
+                </div>
+              {% endif %}
+            </div>
+            <!-- Circular Shop Now button (approx. 34% width) -->
+            <div class="col-4 text-right">
+              <a href="{% url 'products' %}" class="shop-now-circle text-uppercase text-center">
+                <strong>Slurp Now!</strong>
+              </a>
+            </div>
           </div>
-        {% endif %}
+        </div>
       </div>
-      <!-- Right column: Shop Now button -->
-      <div class="col-12 col-md-6 mt-5 text-md-right text-center">
-        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-1 text-uppercase py-3">
-          Slurp Now!
-        </a>
-      </div>
+      
     </div>
   </div>
 {% endblock %}
