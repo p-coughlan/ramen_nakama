@@ -34,19 +34,20 @@
         <div class="news-section mt-4">
           <h4 class="text-white"><strong>Ramen</strong> Nakama News</h4>
           {% if news %}
-            <div class="news-content">
-              {{ news }}
-            </div>
-          {% else %}
-            <div class="card bg-dark text-black mb-5">
-              <img src="media/Scrandit.jpg" alt="News Image" class="card-img-top img-fluid">
-              <div class="card-body">
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                </p>
+            {% for item in news %}
+              <div class="card bg-dark text-black mb-5">
+                {% if item.image %}
+                  <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card-img-top img-fluid">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.title }}</h5>
+                  <p class="card-text">{{ item.content|truncatewords:30 }}</p>
+                  <a href="{% url 'news-detail' item.pk %}" class="btn btn-outline-black">Read More</a>
+                </div>
               </div>
-            </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-white">No news available at this time.</p>
           {% endif %}
         </div>
       </div>
