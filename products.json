@@ -1,0 +1,307 @@
+env.py imported
+[
+{
+  "model": "products.category",
+  "pk": 14,
+  "fields": {
+    "name": "meat_ramen",
+    "friendly_name": "Meat"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 15,
+  "fields": {
+    "name": "vegan_ramen",
+    "friendly_name": "Vegan"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 16,
+  "fields": {
+    "name": "veg_ramen",
+    "friendly_name": "Vegetarian"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 17,
+  "fields": {
+    "name": "sides",
+    "friendly_name": "Sides"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 18,
+  "fields": {
+    "name": "t_shirts",
+    "friendly_name": "T - Shirts"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 19,
+  "fields": {
+    "name": "tea_towels",
+    "friendly_name": "Tea Towels"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 181,
+  "fields": {
+    "category": 15,
+    "sku": "RAMEN001",
+    "name": "RAMEN 001",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "12.50",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-1.jpg",
+    "sold_out": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 182,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN002",
+    "name": "RAMEN 002",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "13.50",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-2.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 183,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN003",
+    "name": "RAMEN 003",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "13.50",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-3.jpg",
+    "sold_out": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 184,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN004",
+    "name": "RAMEN 004",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "14.00",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-4.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 185,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN005",
+    "name": "RAMEN 005",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "14.00",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-5.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 186,
+  "fields": {
+    "category": 16,
+    "sku": "RAMEN006",
+    "name": "RAMEN 006",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "13.00",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-6.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 187,
+  "fields": {
+    "category": 16,
+    "sku": "RAMEN007",
+    "name": "RAMEN 007",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "13.50",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-7.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 188,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN008",
+    "name": "RAMEN 008",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "14.50",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-8.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 189,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN009",
+    "name": "RAMEN 009",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "14.00",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-9.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 190,
+  "fields": {
+    "category": 14,
+    "sku": "RAMEN010",
+    "name": "RAMEN 010",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "15.00",
+    "rating": null,
+    "image_url": null,
+    "image": "Ramen-10.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 191,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES001",
+    "name": "SIDES 001",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "3.00",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-1.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 192,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES002",
+    "name": "SIDES 002",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "2.50",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-2.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 193,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES003",
+    "name": "SIDES 003",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "2.50",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-3.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 194,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES004",
+    "name": "SIDES 004",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "7.50",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-4.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 195,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES005",
+    "name": "SIDES 005",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "9.00",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-5.jpg",
+    "sold_out": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 196,
+  "fields": {
+    "category": 17,
+    "sku": "SIDES006",
+    "name": "SIDES 006",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    "has_sizes": false,
+    "price": "4.00",
+    "rating": null,
+    "image_url": null,
+    "image": "sides-6.jpg",
+    "sold_out": false
+  }
+}
+]
