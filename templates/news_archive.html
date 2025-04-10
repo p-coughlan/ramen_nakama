@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="news-archive-container">
+  <div class="container mt-3">
+    <h1 class="text-light mb-4">News Archive</h1>
+    {% for item in news_list %}
+      <div class="row news-item mb-5">
+        {% if forloop.counter|divisibleby:"2" %}
+          <!-- Even-numbered items: text on left, image on right -->
+          <div class="col-12 col-md-6 order-md-1 text-left">
+            <h3 class="text-light">{{ item.title }}</h3>
+            <p class="text-light">{{ item.content|truncatewords:50 }}</p>
+          </div>
+          <div class="col-12 col-md-6 order-md-2 text-right">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-fluid">
+            {% endif %}
+          </div>
+        {% else %}
+          <!-- Odd-numbered items: image on left, text on right -->
+          <div class="col-12 col-md-6 order-md-1 text-right">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-fluid">
+            {% endif %}
+          </div>
+          <div class="col-12 col-md-6 order-md-2 text-left">
+            <h3 class="text-light">{{ item.title }}</h3>
+            <p class="text-light">{{ item.content|truncatewords:50 }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p class="text-light">No news items found.</p>
+    {% endfor %}
+    {% if is_paginated %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+          {% endif %}
+          <li class="page-item disabled">
+            <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+          </li>
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

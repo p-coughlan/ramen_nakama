@@ -71,6 +71,19 @@ body {
     width: fit-content;
 }
 
+/* --------------------------- News Archive Top Spacing --------------------------- */
+
+.news-archive-container {
+    padding-top: 200px;  /* Adjust this value as needed */
+}
+
+/* Alternatively, if use a margin:
+.news-archive-container {
+    margin-top: 150px; 
+}
+*/
+
+
 /* ------------------------------- Buttons ------------------------------- */
 
 /* Old Shop Now Button styling (Not used in new design) 
