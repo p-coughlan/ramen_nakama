@@ -261,3 +261,6 @@ Review
 Wishlist
 Mailing List
 How did you hear about us
+
+Scrandit img source:
+https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious
