@@ -15,7 +15,7 @@ body {
     background-attachment: fixed; /* Background stays fixed */
     background-size: cover;
     color: #555;
-    font-family: 'Skia', sans-serif;
+    font-family: "skia-cc", sans-serif;
 }
 
 /* Main content expands to push the footer to the bottom */

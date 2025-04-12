@@ -264,3 +264,52 @@ How did you hear about us
 
 Scrandit img source:
 https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious
+
+Skia CC Regular
+font-family: "skia-cc", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Bold
+font-family: "skia-cc", sans-serif;
+font-weight: 700;
+font-style: normal;
+Skia CC Compressed Regular
+font-family: "skia-cc-compressed", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Compressed Bold
+font-family: "skia-cc-compressed", sans-serif;
+font-weight: 700;
+font-style: normal;
+Skia CC Condensed Regular
+font-family: "skia-cc-condensed", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Condensed Bold
+font-family: "skia-cc-condensed", sans-serif;
+font-weight: 700;
+font-style: normal;
+Skia CC Semi Condensed Regular
+font-family: "skia-cc-semi-condensed", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Semi Condensed Bold
+font-family: "skia-cc-semi-condensed", sans-serif;
+font-weight: 700;
+font-style: normal;
+Skia CC Wide Regular
+font-family: "skia-cc-wide", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Wide Bold
+font-family: "skia-cc-wide", sans-serif;
+font-weight: 700;
+font-style: normal;
+Skia CC Extended Regular
+font-family: "skia-cc-extended", sans-serif;
+font-weight: 400;
+font-style: normal;
+Skia CC Extended Bold
+font-family: "skia-cc-extended", sans-serif;
+font-weight: 700;
+font-style: normal;
