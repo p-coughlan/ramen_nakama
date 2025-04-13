@@ -72,6 +72,10 @@ body {
     width: fit-content;
 }
 
+.main-logo {
+    color: #1e234d !important; /* Ramen Blue */
+}
+
 .nav-font {
     font-family: "skia-cc", sans-serif;
     font-size: 1.2rem;
@@ -446,6 +450,14 @@ input[name='q']::placeholder {
     }
 }
 
+/* --------------------------- Screens below 1200px wide --------------------------- */
+
+@media (max-width: 1200px) {
+   .main-logo {
+        font-size: 2rem;
+    }
+}
+
 /* --------------------------- Miscellaneous --------------------------- */
 
 /* .display-4 {
@@ -464,6 +476,10 @@ h1 {
 
 .main-logo {
     text-shadow: 1px 1px 1px white;
+}
+
+.text-black {
+    color: #1e234d !important;
 }
 
 /* Color Palette Notes:
