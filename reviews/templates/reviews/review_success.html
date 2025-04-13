@@ -15,14 +15,17 @@
 
 {% block content %}
 <div class="container">
-  <!-- Keep similar styling to your review submission page -->
+  <!-- Keep similar styling to review submission page -->
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       <div class="card bg-light p-4">
         <h2 class="card-title text-center">Thank You!</h2>
-        <p class="card-text text-center">Thank you for submitting a review. Your feedback is important to us.</p>
+        <p class="card-text text-center">Thank you for submitting a review!</p>
+        <p class="card-text text-center">Your feedback is important to us.</p>
         <div class="text-center mt-3">
-          <a href="{% url 'home' %}" class="btn btn-primary">Return to Homepage</a>
+            <a href="{% url 'home' %}" class="shop-now-circle text-uppercase text-center">
+                <strong>Return Home</strong>
+              </a>
         </div>
       </div>
     </div>
