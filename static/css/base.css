@@ -20,6 +20,7 @@ body {
 
 /* Main content expands to push the footer to the bottom */
 .main-content {
+    padding-top: 50px;
     flex: 1;
 }
 
@@ -71,6 +72,12 @@ body {
     width: fit-content;
 }
 
+.nav-font {
+    font-family: "skia-cc", sans-serif;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px white;
+}
+
 /* --------------------------- News Archive Top Spacing --------------------------- */
 
 .news-archive-container {
@@ -83,6 +90,11 @@ body {
 }
 */
 
+/* ------------------------------- Reviews ------------------------------- */
+
+.review-success {
+    margin-top: 200px;
+}
 
 /* ------------------------------- Buttons ------------------------------- */
 
@@ -390,6 +402,23 @@ input[name='q']::placeholder {
     }
 }
 
+/* Adjust h1 and h4 styles for mobile devices */
+@media (max-width: 768px) {
+    h1.main-page-content {
+        font-size: 2.5rem; /* Smaller font size */
+        text-align: center !important; /* Center align */
+        line-height: 1.2; /* Reduce line spacing */
+        /* margin-top: 10px !important; /* Adjust top margin */
+        margin-bottom: 0px !important; /* Adjust bottom margin */
+    }
+
+    h4.text-white {
+        font-size: 1rem; /* Smaller font size */
+        text-align: center; /* Center align */
+        margin-top: 0px !important; /* Adjust top margin */
+    }
+}
+
 /* --------------------------- Footer Styles --------------------------- */
 
 /* Mobile Footer: normal flow */
@@ -419,9 +448,9 @@ input[name='q']::placeholder {
 
 /* --------------------------- Miscellaneous --------------------------- */
 
-.display-4 {
+/* .display-4 {
     margin-top: 3rem;
-}
+} */
 
 .bg-white,
 .bg-light,

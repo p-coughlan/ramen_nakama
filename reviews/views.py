@@ -10,7 +10,13 @@ def submit_review(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()  # review.approved remains False until an admin approves it
-            return redirect('profile')  # Redirect to the user's profile
+            # Use the underscore version here:
+            return redirect('review_success')
     else:
         form = ReviewForm()
     return render(request, 'reviews/submit_review.html', {'form': form})
+
+@login_required
+def review_success(request):
+    """Render a thank-you page after a review is submitted."""
+    return render(request, 'reviews/review_success.html')
