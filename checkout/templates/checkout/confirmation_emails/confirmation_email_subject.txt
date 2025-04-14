@@ -1,1 +1,1 @@
-Milestone Four Confirmation for Order Number {{ order.order_number }}
+Ramen Nakama Confirmation for Order Number {{ order.order_number }}

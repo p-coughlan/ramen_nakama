@@ -1,15 +1,18 @@
-# [Project Title] - Project Overview
+# Ramen Nakama - Project Overview
 
-<img src="assets/images/placeholder.jpg" alt="homepage placeholder" width="1000">
-<p style="font-size: 10px">Image Source: <a href="https://example.com">Placeholder Source</a></p>
+<img src="media/ramen-responsive.jpg" alt="Ramen Nakama Homepage" width="1000">
+<p style="font-size: 10px">Image Source: <a href="https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious">Scrandit via The Bristol Sauce</a></p>
 
-**[Project Title]** is a web application for [brief description]. This project is built using **[Technology/Framework 1]**, **[Technology/Framework 2]**, and **[Technology/Framework 3]** with a responsive front-end designed using **[CSS Framework]** and custom styling.
+**Ramen Nakama** is a Django-based web application that enables customers to browse and order products and superuser (in this case, the store owner) to manage products, delivery windows and reviews. MENTION BUILT IN AT PRESENT UNUSED FEATURES - RATING ETC
 
-[View Site Here](https://example.com)
+The project utilizes modern web technologies including Django, Heroku, AWS S3 for static/media storage, and Stripe for payment processing. With a responsive, Bootstrap-powered front-end and custom CSS styling, Ramen Nakama offers a seamless user experience for customers and robust management tools for administrators.
+
+[View Site Here](https://milestone-four-ff783f75758e.herokuapp.com)
 
 ---
 
 ## Table of Contents
+
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Design and Development Tools](#design-and-development-tools)
@@ -32,217 +35,227 @@
 
 ## Features
 
-- **Feature 1:**
-  - Placeholder for feature detail.
-  - Placeholder for feature detail.
+- **User-friendly Ordering:**  
+  - Browse a selection of authentic ramen dishes, sides and merchandise (products to be added).
+  - Add items to a shopping bag and check out seamlessly.
+  
+- **Review & Feedback System:**  
+  - Customers can submit reviews (with an approval flow).
+  - A dedicated “thank you” page for review submissions.
 
-- **Feature 2:**
-  - Placeholder for feature detail.
-  - Placeholder for feature detail.
+- **Dynamic News & Updates:**  
+  - The homepage displays a summary of the latest news, managed by the superuser in the admin panel.
+  - A news archive featuring an alternating two-column layout for images and text.
 
-- **Feature 3:**
-  - Placeholder for feature detail.
-  - Placeholder for feature detail.
+- **Responsive and Modern Design:**  
+  - Built with Bootstrap 4 and enhanced with custom CSS.
+  - Fully responsive layout for desktop, tablet, and mobile devices.
 
-*Screenshots and additional images can be added here to illustrate features.*
+- **Secure Payment Processing:**  
+  - Integrated with Stripe to handle payment intents and charge events.
+  - Real-time triggers for key payment events.
 
 ---
 
 ## Technologies Used
 
-[![Tech 1](https://img.shields.io/badge/Tech1-Placeholder-blue?style=for-the-badge)](https://example.com)  
-[![Tech 2](https://img.shields.io/badge/Tech2-Placeholder-blue?style=for-the-badge)](https://example.com)  
-[![Tech 3](https://img.shields.io/badge/Tech3-Placeholder-blue?style=for-the-badge)](https://example.com)
+#### Backend & Deployment  
+[![Django](https://img.shields.io/badge/Django-3.2-green?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Heroku](https://img.shields.io/badge/Heroku-Deploy-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://www.heroku.com/)
+[![AWS S3](https://img.shields.io/badge/AWS_S3-Storage-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/s3/)
+[![Stripe](https://img.shields.io/badge/Stripe-Payments-6772e5?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com/)
 
-*Add more libraries or frameworks as needed.*
+#### Frontend Technologies  
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-4-563d7c?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+
+#### Database Solutions  
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/index.html)
 
 ---
 
 ## Design and Development Tools
 
-[![Tool 1](https://img.shields.io/badge/Tool1-Placeholder-blue?style=for-the-badge)](https://example.com)  
-[![Tool 2](https://img.shields.io/badge/Tool2-Placeholder-blue?style=for-the-badge)](https://example.com)  
-[![Tool 3](https://img.shields.io/badge/Tool3-Placeholder-blue?style=for-the-badge)](https://example.com)
+#### Code Editors & Version Control  
+[![VSCode](https://img.shields.io/badge/VSCode-Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
+[![Git](https://img.shields.io/badge/Git-Version_Control-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
+
+#### Design & Branding  
+[![Figma](https://img.shields.io/badge/Figma-Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/)
+[![Adobe Photoshop](https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=white)](https://www.adobe.com/products/photoshop.html)
+[![Font Awesome](https://img.shields.io/badge/Font%20Awesome-528DD7?style=for-the-badge&logo=font-awesome&logoColor=white)](https://fontawesome.com/)
+[![Adobe Fonts](https://img.shields.io/badge/Adobe%20Fonts-000000?style=for-the-badge&logo=adobe&logoColor=white)](https://fonts.adobe.com/)
 
 ---
 
 ## Usage Instructions
 
 ### For Customers
-- **View Content:**  
-  Visit the homepage to see available options.
+- **Browse & Order:**  
+  Visit the homepage to explore our ramen menu.  
+  Add items to your bag and complete the checkout process easily.
 
-- **Action 1:**  
-  Follow the steps to perform the first action.
+- **Review Products:**  
+  After receiving your order, you can submit a review from the review submission page.
 
-- **Action 2:**  
-  Follow the steps to perform the second action.
-
-<img src="assets/images/placeholder_booking.jpg" alt="booking placeholder" width="800">
+<img src="#" alt="Customer ordering" width="800">
 
 ### For Staff/Admin
-- **Admin Login:**  
-  Use the designated admin link to access the management panel.
+- **Admin Interface:**  
+  Log in via the admin portal to manage products, view orders, and oversee reviews.
+  
+- **Content Updates:**  
+  Use the integrated admin panels to add news items, update menus, and process user feedback.
 
-- **Manage Content:**  
-  Use the provided interfaces to manage and update content.
-
-<img src="assets/images/placeholder_admin.jpg" alt="admin placeholder" width="800">
+<img src="#" alt="Admin interface" width="800">
 
 ---
 
 ## Testing
 
-Outline the main testing scenarios and any manual or automated tests:
-
-- **Test Scenario 1:**  
-  Placeholder for test details.
-
-- **Test Scenario 2:**  
-  Placeholder for test details.
-
-*More test details can be added here.*
+The project has been manually tested across various browsers and devices. Key scenarios included:
+- Ordering flow from product selection to checkout.
+- Review submission process with redirection to a thank-you page.
+- Payment processing simulation using Stripe triggers.
+- Responsiveness across desktop, tablet, and mobile viewports.
 
 ---
 
 ## Testing Table
 
-| Test Condition            | Expected Outcome                     | Result    | Notes                      |
-|---------------------------|--------------------------------------|-----------|----------------------------|
-| **Condition 1**           | Placeholder expected outcome.        | Pass/Fail | Placeholder notes.         |
-| **Condition 2**           | Placeholder expected outcome.        | Pass/Fail | Placeholder notes.         |
-| **Condition 3**           | Placeholder expected outcome.        | Pass/Fail | Placeholder notes.         |
+| Test Condition                   | Expected Outcome                                  | Result   | Notes                      |
+|----------------------------------|---------------------------------------------------|----------|----------------------------|
+| Ordering a selection             | Items added and checkout processed correctly      | Pass/Fail| Checked with multiple items|
+| Review Submission                | User is redirected to a thank-you page            | Pass/Fail|                            |
+| Responsive layout                | Layout adjusts to mobile, tablet, and desktop     | Pass/Fail| Minor spacing adjustments  |
+| Stripe payment simulation        | Payment events trigger correctly                  | Pass/Fail| Logged via Stripe dashboard|
 
 ---
 
 ## User Stories
 
-- **User Story 1:**  
-  - *Acceptance Criteria:*
-    - Placeholder criteria detail.
-
-- **User Story 2:**  
-  - *Acceptance Criteria:*
-    - Placeholder criteria detail.
-
-- **User Story 3:**  
-  - *Acceptance Criteria:*
-    - Placeholder criteria detail.
+- **As a customer, I want to order ramen quickly and easily**  
+  - *Acceptance Criteria:* Fast ordering, clear product information, secure payment.
+  
+- **As a customer, I want to submit a review after my order**  
+  - *Acceptance Criteria:* Review form validates input, shows success message.
+  
+- **As an admin, I want to manage news items and orders**  
+  - *Acceptance Criteria:* Admin panel allows creating, updating, and deleting content.
 
 ---
 
 ## Visual Design
 
-Describe the overall design approach:
-
 - **Layout:**  
-  Placeholder description for layout and design.
-
+  A grid-based, two-column layout for content pages with alternating news items.
+  
 - **Color Scheme:**  
-  Placeholder for color scheme details.
-
+  Utilizes Ramen Blue (#1e234d), Ramen Pink (#e75b66), and Ramen Yellow (#fde9d0) for a cohesive brand feel.
+  
 - **Typography:**  
-  Placeholder for typography details.
+  Custom fonts such as Skia CC in various weights (Regular, Bold, Condensed, etc.) are used across the site.
 
-<img src="assets/images/placeholder_design.jpg" alt="design placeholder" width="400">
+<img src="assets/images/design_placeholder.jpg" alt="Design overview" width="400">
 
 ---
 
 ## Design Considerations
 
-- **Architecture:**  
-  Brief description of the architectural decisions.
-
-- **Modular Structure:**  
-  Explanation of how the project is organized into modules.
-
+- **Architectural Decisions:**  
+  Modular Django apps for scalability and maintainability.
+  
 - **Responsive Design:**  
-  Placeholder details for responsive design.
-
+  Bootstrap 4 ensures the site adapts to all device types.
+  
 - **User Experience:**  
-  Placeholder for UX considerations.
+  Minimal clicks for ordering and submitting reviews with clear feedback.
 
-- **Deployment:**  
-  Placeholder for deployment or configuration details.
+- **Deployment & Maintenance:**  
+  Deployed on Heroku, with AWS S3 for static and media file hosting.
 
 ---
 
 ## Entity Relationship Diagram (ERD)
 
-Include your ERD diagram:
+<img src="assets/images/erd_placeholder.jpg" alt="ERD diagram" width="600">
 
-<img src="assets/images/placeholder_erd.jpg" alt="ERD placeholder" width="600">
-
-### Explanation
-
-- **Entity 1:**  
-  - **Attributes:** Placeholder details.  
-  - **Relationship:** Placeholder details.
-
-- **Entity 2:**  
-  - **Attributes:** Placeholder details.  
-  - **Relationship:** Placeholder details.
-
-- **Entity 3:**  
-  - **Attributes:** Placeholder details.  
-  - **Relationship:** Placeholder details.
+**Explanation:**
+- **Products:** Contains details about each ramen dish.
+- **Orders:** Captures order details and status.
+- **Reviews:** Stores customer reviews with a moderation flag.
+- **News:** Maintains news updates for the site.
 
 ---
 
 ## Essential Future Improvements
 
-- **Improvement 1:**  
-  Placeholder for improvement detail.
-
-- **Improvement 2:**  
-  Placeholder for improvement detail.
-
-- **Improvement 3:**  
-  Placeholder for improvement detail.
+- **Enhanced Payment Flow:**  
+  Integrate more robust error handling and notifications for payment issues.
+  
+- **Mobile Optimization:**  
+  Further refine mobile UX beyond Bootstrap defaults.
+  
+- **User Account Features:**  
+  Implement wishlists and order tracking.
 
 ---
 
 ## Other Future Improvements
 
-- **Improvement 4:**  
-  Placeholder for improvement detail.
-
-- **Improvement 5:**  
-  Placeholder for improvement detail.
-
-- **Improvement 6:**  
-  Placeholder for improvement detail.
-
-*Additional improvements may be added as the project evolves.*
+- **New Content Types:**  
+  Ideas for Mailing List integration and additional user feedback models.
+  
+- **Real-time Updates:**  
+  Consider WebSockets or AJAX for live order tracking and notifications.
 
 ---
 
 ## References and Credits
 
-- **Reference 1:**  
-  [Placeholder Reference](https://example.com)
-
-- **Reference 2:**  
-  [Placeholder Reference](https://example.com)
-
-- **Reference 3:**  
-  [Placeholder Reference](https://example.com)
+- **Django Documentation:** [https://docs.djangoproject.com/](https://docs.djangoproject.com/)
+- **Stripe API Reference:** [https://stripe.com/docs/api](https://stripe.com/docs/api)
+- **Bootstrap Documentation:** [https://getbootstrap.com/](https://getbootstrap.com/)
+- **Scrandit Image Source:** [https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious](https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious)
 
 ---
 
 ## License
 
-This project is licensed under the [License Name] License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 ## Acknowledgements
 
-Special thanks to:
+- **Mentor:** Special thanks to [Your Mentor's Name] for guidance.
+- **Team Members:** Thanks to [Name 1], [Name 2], and [Name 3] for their contributions.
+- **Inspiration:** Inspired by local Bristol cuisine culture and innovative delivery concepts.
 
-- **Mentor/Advisor 1:** Placeholder name and role.
-- **Mentor/Advisor 2:** Placeholder name and role.
-- **Team Members:** Placeholder names.
+---
+
+### NOTES:
+
+- **Webhook Testing for Stripe:**  
+  - `stripe trigger payment_intent.created`  
+  - `stripe trigger payment_intent.succeeded`  
+  - `stripe trigger payment_intent.payment_failed`  
+  - `stripe trigger charge.succeeded`  
+  - `stripe trigger charge.failed`
+
+- **Extra Model Ideas:**  
+  - Review, Wishlist, Mailing List, and "How did you hear about us"
+
+- **Font Information (Skia):**  
+  - *Skia CC Regular:* `font-family: "skia-cc", sans-serif; font-weight: 400;`  
+  - *Skia CC Bold:* `font-family: "skia-cc", sans-serif; font-weight: 700;`  
+  - *(Additional variants as needed)*
+
+
 
 ------------------------------------
 NOTES:

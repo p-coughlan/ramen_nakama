@@ -9,6 +9,7 @@ from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from bag.contexts import bag_contents
+from ordercontrol.models import OrderWindow
 
 import stripe
 import json
@@ -146,6 +147,10 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
+    # Retrieve the next delivery date from the OrderWindow model
+    order_window = OrderWindow.objects.first()  # Assuming there's only one OrderWindow instance
+    next_delivery_date = order_window.next_delivery_date if order_window else None
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
@@ -171,15 +176,17 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     
-    # add a message in terminal to show the order was successful
+    # Add a message in the terminal to show the order was successful
     print('Order successfully processed!')
 
     if 'bag' in request.session:
         del request.session['bag']
 
+    # Pass the next delivery date to the template context
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'next_delivery_date': next_delivery_date,
     }
 
     return render(request, template, context)

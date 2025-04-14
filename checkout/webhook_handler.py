@@ -6,6 +6,7 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from ordercontrol.models import OrderWindow
 
 import json
 import time
@@ -21,13 +22,26 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
+
+        # Retrieve the next delivery date from the OrderWindow model
+        order_window = OrderWindow.objects.first()  # Assuming there's only one OrderWindow instance
+        next_delivery_date = order_window.next_delivery_date if order_window else None
+
+        # Render email subject and body
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
+            {'order': order}
+        )
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+            {
+                'order': order,
+                'next_delivery_date': next_delivery_date,
+                'contact_email': settings.DEFAULT_FROM_EMAIL,
+            }
+        )
+
+        # Send the email
         send_mail(
             subject,
             body,
