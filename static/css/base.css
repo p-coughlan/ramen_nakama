@@ -30,13 +30,15 @@ body {
 .order-status-container {
     background-color: #fde9d0;  /* Ramen Yellow */
     padding: 20px;
-    border: 2px solid #000;     /* Bold border */
+    border: 1px solid #1e234d;   /* Ramen Blue */
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 /* Order Status Text, left aligned */
 .order-status-message {
-    font-size: 1.5rem;          /* Increased font size */
+    font-size: 1.2rem;          /* Increased font size */
+    text-transform: uppercase;    /* Uppercase text */
     color: #1e234d;             /* Ramen Blue */
     text-align: left;
     margin-bottom: 20px;
@@ -56,6 +58,7 @@ body {
     font-size: 1.2rem;
     border: 4px solid #1e234d;  /* Border in Ramen Blue */
     text-shadow: 1px 1px 1px #1e234d;
+
 }
 
 

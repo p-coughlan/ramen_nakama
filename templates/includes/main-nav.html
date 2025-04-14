@@ -7,7 +7,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-font logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Everything Ramen</strong>
+                <strong>Shop All</strong>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
@@ -48,11 +48,11 @@
 
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'submit_review' %}"><strong>Review Us!</strong></a>
             </li>
         {% else %}
             <li class="nav-item">
-                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'account_login' %}?next={% url 'submit_review' %}"><strong>Leave a Review</strong></a>
+                <a class="nav-font logo-font font-weight-bold nav-link text-black" href="{% url 'account_login' %}?next={% url 'submit_review' %}"><strong>Review Us!</strong></a>
             </li>
         {% endif %}
     </ul>
