@@ -1,4 +1,13 @@
 /* ------------------------------- Base Styles ------------------------------- */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+* {
+    box-sizing: border-box;
+}
 
 html {
     height: 100%;
@@ -435,7 +444,8 @@ input[name='q']::placeholder {
         position: relative;
         z-index: 1000;
         background-color: #e75b66 !important;
-        padding: 1rem 0;
+        /* padding: 1rem 0;*/
+        width: 100vw;
     }
 }
 
@@ -448,6 +458,7 @@ input[name='q']::placeholder {
         right: 0;
         z-index: 1000;
         background-color: #e75b66 !important;
+        width: 100vw;
     }
     body {
         padding-bottom: 60px;
