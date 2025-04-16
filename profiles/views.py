@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
-
 from checkout.models import Order
+from reviews.models import Review  # ← import the Review model
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """ Display and update the user's profile, plus list their reviews. """
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -21,16 +21,17 @@ def profile(request):
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
 
-    template = 'profiles/profile.html'
-    context = {
+    orders = profile.orders.all()
+    # Fetch all reviews by this user
+    reviews = Review.objects.filter(user=request.user)
+
+    return render(request, 'profiles/profile.html', {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
-    }
-
-    return render(request, template, context)
+        'reviews': reviews,           # ← pass reviews into context
+        'on_profile_page': True,
+    })
 
 
 def order_history(request, order_number):
@@ -41,10 +42,7 @@ def order_history(request, order_number):
         'A confirmation email was sent on the order date.'
     ))
 
-    template = 'checkout/checkout_success.html'
-    context = {
+    return render(request, 'checkout/checkout_success.html', {
         'order': order,
         'from_profile': True,
-    }
-
-    return render(request, template, context)
+    })
