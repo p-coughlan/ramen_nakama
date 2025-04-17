@@ -27,6 +27,7 @@ The project utilizes modern web technologies including Django, Heroku, AWS S3 fo
 - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
 - [Essential Future Improvements](#essential-future-improvements)
 - [Other Future Improvements](#other-future-improvements)
+- [Troubleshooting Highlights](#troubleshooting-highlights)
 - [References and Credits](#references-and-credits)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -212,6 +213,103 @@ The project has been manually tested across various browsers and devices. Key sc
   
 - **Real-time Updates:**  
   Consider WebSockets or AJAX for live order tracking and notifications.
+
+---
+
+## Troubleshooting Highlights
+
+1. **Invalid `{% break %}` Tag**  
+   - **Problem:** Templates threw `Invalid block tag: 'break'`.  
+   - **Diagnosis:** Error log showed Django doesn’t support `{% break %}` in loops.  
+   - **Fix:** Replace the loop+break with the slice filter:  
+     ```django
+     {% for item in news|slice:":1" %} … {% endfor %}
+     ```
+
+2. **Missing `news_detail.html` Template**  
+   - **Problem:** `TemplateDoesNotExist: news_detail.html`.  
+   - **Diagnosis:** Template‑loader postmortem showed Django looked in `templates/` and `templates/news/`.  
+   - **Fix:** Either move `news_detail.html` into `templates/` or update the view to  
+     ```python
+     template_name = 'news/news_detail.html'
+     ```
+
+3. **NoReverseMatch: ‘news-detail’ Not Found**  
+   - **Problem:** Clicking “Read More” raised `Reverse for 'news-detail' not found`.  
+   - **Diagnosis:** The URL pattern for the detail view wasn’t defined.  
+   - **Fix:** In `news/urls.py`, add  
+     ```python
+     path('<int:pk>/', NewsDetailView.as_view(), name='news-detail')
+     ```
+
+4. **News Detail Image Hidden Under Header**  
+   - **Problem:** Top of the news image was cropped by the fixed banner.  
+   - **Diagnosis:** Manual resize and inspection showed content starting too high.  
+   - **Fix:** Add top padding to the container (via CSS or Bootstrap utilities), e.g.:  
+     ```css
+     .main-content { padding-top: 150px; }
+     ```
+     or in template:  
+     ```html
+     <div class="container pt-5">…</div>
+     ```
+
+5. **`review_success.html` Not Found**  
+   - **Problem:** `TemplateDoesNotExist: review_success.html` for the success view.  
+   - **Diagnosis:** Postmortem paths showed Django only looked in `…/reviews/templates/reviews/`.  
+   - **Fix:** Move the file to  
+     ```
+     reviews/templates/reviews/review_success.html
+     ```  
+     and render with  
+     ```python
+     return render(request, 'reviews/review_success.html')
+     ```
+
+6. **NoReverseMatch: ‘submit_review’ Not Found**  
+   - **Problem:** Redirect or `{% url 'submit_review' %}` failed.  
+   - **Diagnosis:** URL pattern was named differently (e.g. `submit-review`).  
+   - **Fix:** In `reviews/urls.py`, rename the pattern to match:  
+     ```python
+     path('submit/', submit_review, name='submit_review')
+     ```
+
+7. **NoReverseMatch: ‘review-success’ vs ‘review_success’**  
+   - **Problem:** Redirect to `'review-success'` failed after form submit.  
+   - **Diagnosis:** View used `redirect('review_success')` but URL was named `review-success`.  
+   - **Fix:** Use a single convention (underscores) everywhere:  
+     ```python
+     path('review-success/', review_success, name='review_success')
+     ```
+
+8. **User Reviews Missing on Profile**  
+   - **Problem:** Approved reviews didn’t show under “My Reviews.”  
+   - **Diagnosis:** Profile view context didn’t include `reviews`.  
+   - **Fix:** Import and add to context in `profiles/views.py`:  
+     ```python
+     from reviews.models import Review
+     reviews = Review.objects.filter(user=request.user)
+     context['reviews'] = reviews
+     ```
+
+9. **Inconsistent Button Stacking**  
+   - **Problem:** Edit/Delete buttons sometimes stacked unevenly on medium screens.  
+   - **Diagnosis:** Manual testing showed default inline/stack mix at breakpoints.  
+   - **Fix:** Wrap buttons with flex classes:  
+     ```html
+     <div class="d-flex flex-column flex-md-row">
+       <a class="btn w-100 w-md-auto mb-2 mb-md-0 mr-md-2">Edit</a>
+       <a class="btn w-100 w-md-auto">Delete</a>
+     </div>
+     ```
+
+10. **Date Not Displayed (‘submitted on’ Blank)**  
+    - **Problem:** Template showed “Submitted on” but no date.  
+    - **Diagnosis:** Model uses `created_at`, but template referenced `created_date`.  
+    - **Fix:** Update the template to use the correct field:  
+      ```django
+      Submitted on {{ review.created_at|date:"F j, Y" }}
+      ```
 
 ---
 

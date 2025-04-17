@@ -188,22 +188,36 @@
 
   {# POST-LOAD SCRIPTS: Review ticker and toasts #}
   {% block postloadjs %}
-    <script type="text/javascript">
-      $('.toast').toast('show');
-    </script>
-    <script>
-      $(document).ready(function() {
-          var items = $('#review-ticker .review-item');
-          var current = 0;
-          function showNextReview() {
-              items.eq(current).fadeOut(1000, function() {
-                  current = (current + 1) % items.length;
-                  items.eq(current).fadeIn(1000);
-              });
-          }
-          setInterval(showNextReview, 5000); // Cycle every 5 seconds.
+  <script type="text/javascript">
+    $('.toast').toast('show');
+  </script>
+  <script>
+    $(document).ready(function() {
+      var items = $('#review-ticker .review-item');
+      var current = 0;
+      function showNextReview() {
+        items.eq(current).fadeOut(1000, function() {
+          current = (current + 1) % items.length;
+          items.eq(current).fadeIn(1000);
+        });
+      }
+
+      // Start the ticker
+      var tickerInterval = setInterval(showNextReview, 5000);
+
+      // Pause/resume when the page is hidden or shown
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          clearInterval(tickerInterval);
+        } else {
+          // Clear just in case, then restart
+          clearInterval(tickerInterval);
+          tickerInterval = setInterval(showNextReview, 5000);
+        }
       });
-    </script>
-  {% endblock %}
+    });
+  </script>
+{% endblock %}
+
 </body>
 </html>
