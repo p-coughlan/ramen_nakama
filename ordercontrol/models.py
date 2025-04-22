@@ -23,8 +23,8 @@ class OrderWindow(models.Model):
     @property
     def ordering_message(self):
         if self.is_ordering_active:
-            return (f"Orders are now open for delivery on {self.next_delivery_date.strftime('%B %d, %Y')}. "
-                    "Order processing will be disabled 48 hours beforehand.")
+            return (f"Place your order now for delivery on {self.next_delivery_date.strftime('%B %d, %Y')}. "
+                    "Order processing will be close 48 hours earlier.")
         elif self.next_delivery_date:
             return (f"Ordering is currently closed. Next delivery is scheduled for "
                     f"{self.next_delivery_date.strftime('%B %d, %Y')}.")

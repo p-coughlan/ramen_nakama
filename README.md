@@ -1,11 +1,25 @@
-# Ramen Nakama - Project Overview
+# Ramen Nakama
 
 <img src="media/ramen-responsive.jpg" alt="Ramen Nakama Homepage" width="1000">
-<p style="font-size: 10px">Image Source: <a href="https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious">Scrandit via The Bristol Sauce</a></p>
 
-**Ramen Nakama** is a Django-based web application that enables customers to browse and order products and superuser (in this case, the store owner) to manage products, delivery windows and reviews. MENTION BUILT IN AT PRESENT UNUSED FEATURES - RATING ETC
+## Project Overview
 
-The project utilizes modern web technologies including Django, Heroku, AWS S3 for static/media storage, and Stripe for payment processing. With a responsive, Bootstrap-powered front-end and custom CSS styling, Ramen Nakama offers a seamless user experience for customers and robust management tools for administrators.
+**Ramen Nakama** is a full‑stack e‑commerce application built on Django that lets:
+
+- **Customers**:
+  - Register an account and manage their profile  
+  - Browse today’s ramen menu and merchandise  
+  - Place orders for a chosen delivery date  
+  - View past orders  
+  - Submit, edit, and delete free‑form reviews (pending approval before display)  
+
+- **Administrators (Store Owner)**:
+  - Manage products (add, edit, remove, toggle “sold out”)  
+  - Publish news items that surface on the homepage (with an archive view)  
+  - Enable or disable live ordering and announce upcoming delivery windows  
+
+The app is deployed on **Heroku**, uses **AWS S3** for static/media hosting, and integrates **Stripe** for secure payment processing. Its responsive **Bootstrap**‑powered front end is supplemented with custom CSS for a distinctive look. Ramen Nakama extends Code Institute’s Boutique Ado template with bespoke models and workflows tailored to the demands of a modern ramen delivery service.
+
 
 [View Site Here](https://milestone-four-ff783f75758e.herokuapp.com)
 
@@ -14,15 +28,16 @@ The project utilizes modern web technologies including Django, Heroku, AWS S3 fo
 ## Table of Contents
 
 - [Features](#features)
+- [Visual Design](#visual-design)
 - [Technologies Used](#technologies-used)
 - [Design and Development Tools](#design-and-development-tools)
+- [Installation & Setup](#installation-and-setup)
 - [Usage Instructions](#usage-instructions)
   - [For Customers](#for-customers)
   - [For Staff/Admin](#for-staffadmin)
 - [Testing](#testing)
 - [Testing Table](#testing-table)
 - [User Stories](#user-stories)
-- [Visual Design](#visual-design)
 - [Design Considerations](#design-considerations)
 - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
 - [Essential Future Improvements](#essential-future-improvements)
@@ -55,6 +70,82 @@ The project utilizes modern web technologies including Django, Heroku, AWS S3 fo
 - **Secure Payment Processing:**  
   - Integrated with Stripe to handle payment intents and charge events.
   - Real-time triggers for key payment events.
+
+---
+
+## Visual Design
+
+Overview of the visual and UX approach for Ramen Nakama, including layout, branding, typography, and responsiveness.
+
+
+### Layout & Structure  
+- **Grid System:** Built on a 12‑column Bootstrap grid.  
+- **Two‑Column Sections:** Key content (e.g. news cards, feature calls) alternate image/text to keep the page dynamic.  
+- **Hero Area:** Full‑width background image with gradient overlay ensures readability of the main headline and CTA.
+
+
+### Colour Palette  
+This palette comes straight from the store’s logo. Deeper integration of these colours into the overall site design is tracked under [Essential Future Improvements](#essential-future-improvements).
+
+| Name         | HEX       | Usage                             |
+|--------------|-----------|-----------------------------------|
+| Ramen Blue   | `#1e234d` | Headers, nav links, borders       |
+| Ramen Pink   | `#e75b66` | Primary CTAs, buttons, highlights |
+| Ramen Yellow | `#fde9d0` | Background overlays, cards        |
+
+<img src="media/readme/primary-palette.jpg" alt="Colour Palette" width="800">
+
+
+### Typography  
+Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand personality:
+
+- **Skia CC Regular (400):**  
+  Applied to body copy, form labels, and secondary headings for clear legibility.  
+- **Skia CC Bold (700):**  
+  Used for primary headlines, buttons (e.g. “Slurp Now”), and key calls‑to‑action to establish hierarchy.
+
+<img src="media/readme/skia-font.jpg" alt="Skia Adobe Font" width="800">
+
+
+### Imagery & Icons  
+- **Photography:** All product shots and site imagery (hero, dishes, merch) were photographed by the developer; only news‑item images come from external sources.  
+- **Product Thumbnails:** Consistent aspect ratio and size for visual harmony.  
+- **Icons:** Font Awesome for UI elements (search, user, cart) ensures scalability and crispness.
+
+<img src="media/readme/dishes.jpg" alt="Food Thumbnails" width="800">  
+<img src="media/hero.jpg" alt="Hero Image" width="800">
+
+
+### UI Components & Overrides  
+- **Buttons:**  
+  - Circular “Slurp Now” in Ramen Pink with a Ramen Blue border.  
+  - Full‑width on mobile; auto‑width on larger screens with flex layouts.  
+- **Cards:**  
+  - `.bg-light` and `.card-body` overridden to Ramen Yellow for consistency.  
+  - Soft shadows and 2xl rounded corners for a modern look.  
+- **Forms:**  
+  - Crispy‑Forms with black borders, square corners, and custom placeholder styling.
+
+
+### Responsive Behavior  
+- **Container Width:** Max‑width set to 80% on extra‑large screens (≥1200px).  
+- **Header Padding:** Adjusts between desktop (`164px`) and mobile (`116px`) to accommodate fixed elements.  
+- **Button & Text Scaling:** Font sizes and padding adjust via media queries to ensure tap‑target accessibility on mobile.  
+
+
+### Screenshots
+
+#### Desktop View  
+![Desktop Homepage](assets/images/desktop_homepage.png)  
+*Homepage at 1440px showing hero, news card, and “Slurp Now” CTA.*
+
+#### Tablet View  
+![Tablet Layout](assets/images/tablet_layout.png)  
+*Two‑column news and features on a tablet‑sized viewport.*
+
+#### Mobile View  
+![Mobile Homepage](assets/images/mobile_homepage.png)  
+*Single‑column flow on mobile, central CTAs and easy scroll.*
 
 ---
 
@@ -93,75 +184,210 @@ The project utilizes modern web technologies including Django, Heroku, AWS S3 fo
 
 ---
 
+## Installation & Setup
+---
+
 ## Usage Instructions
 
 ### For Customers
-- **Browse & Order:**  
-  Visit the homepage to explore our ramen menu.  
-  Add items to your bag and complete the checkout process easily.
 
-- **Review Products:**  
-  After receiving your order, you can submit a review from the review submission page.
+1. **Register & Log In**  
+   - Click “My Account” in the navbar.  
+   - Choose **Register** (or **Login** if you already have an account).  
+   - Fill out the signup form (username, email, password), then verify via the confirmation email.
 
-<img src="#" alt="Customer ordering" width="800">
+2. **Browse & Search**  
+   - From the homepage, click **Shop All** or use the search icon to find specific dishes or merchandise.  
+   - Filter by category (Ramen, Sides, Merchandise) or sort by price/rating.
 
-### For Staff/Admin
-- **Admin Interface:**  
-  Log in via the admin portal to manage products, view orders, and oversee reviews.
-  
-- **Content Updates:**  
-  Use the integrated admin panels to add news items, update menus, and process user feedback.
+3. **Add to Bag**  
+   - On a product page, select any available options (e.g. size) and click **Add to Bag**.  
+   - A toast notification will confirm your selection.
 
-<img src="#" alt="Admin interface" width="800">
+4. **View & Edit Bag**  
+   - Click the bag icon in the navbar to view your current order.  
+   - Adjust quantities or remove items directly in the bag summary.
 
----
+5. **Checkout**  
+   - From the bag page, click **Checkout**.  
+   - Enter your saved delivery details or update your address.  
+   - Select a delivery date from the open ordering window.  
+   - Complete payment securely via Stripe.
 
-## Testing
+6. **Order Confirmation & History**  
+   - After successful payment, you’ll see a confirmation page with an order number.  
+   - In your profile, click **Order History** to review past orders and quickly reorder if desired.  
 
-The project has been manually tested across various browsers and devices. Key scenarios included:
-- Ordering flow from product selection to checkout.
-- Review submission process with redirection to a thank-you page.
-- Payment processing simulation using Stripe triggers.
-- Responsiveness across desktop, tablet, and mobile viewports.
+7. **Submit a Review**  
+   - Once your order arrives, navigate to **Review Us!** in the navbar (or from your profile).  
+   - Fill out the free‑form review form and submit.  
+   - You’ll be redirected to a “Thank You” page confirming your submission.  
 
----
+<img src="media/readme/customer_flow_1.png" alt="Customer browsing products" width="800">  
+*Customer browsing the menu and adding items to their bag.*  
 
-## Testing Table
-
-| Test Condition                   | Expected Outcome                                  | Result   | Notes                      |
-|----------------------------------|---------------------------------------------------|----------|----------------------------|
-| Ordering a selection             | Items added and checkout processed correctly      | Pass/Fail| Checked with multiple items|
-| Review Submission                | User is redirected to a thank-you page            | Pass/Fail|                            |
-| Responsive layout                | Layout adjusts to mobile, tablet, and desktop     | Pass/Fail| Minor spacing adjustments  |
-| Stripe payment simulation        | Payment events trigger correctly                  | Pass/Fail| Logged via Stripe dashboard|
-
----
-
-## User Stories
-
-- **As a customer, I want to order ramen quickly and easily**  
-  - *Acceptance Criteria:* Fast ordering, clear product information, secure payment.
-  
-- **As a customer, I want to submit a review after my order**  
-  - *Acceptance Criteria:* Review form validates input, shows success message.
-  
-- **As an admin, I want to manage news items and orders**  
-  - *Acceptance Criteria:* Admin panel allows creating, updating, and deleting content.
+<img src="media/readme/customer_flow_2.png" alt="Customer checkout page" width="800">  
+*Checkout form with delivery date picker and Stripe payment.*  
 
 ---
 
-## Visual Design
+### For Staff / Admin
 
-- **Layout:**  
-  A grid-based, two-column layout for content pages with alternating news items.
-  
-- **Color Scheme:**  
-  Utilizes Ramen Blue (#1e234d), Ramen Pink (#e75b66), and Ramen Yellow (#fde9d0) for a cohesive brand feel.
-  
-- **Typography:**  
-  Custom fonts such as Skia CC in various weights (Regular, Bold, Condensed, etc.) are used across the site.
+1. **Access the Admin Portal**  
+   - Go to `/admin` and log in with your superuser credentials.
 
-<img src="assets/images/design_placeholder.jpg" alt="Design overview" width="400">
+2. **Manage Products**  
+   - Under **Products**, you can **Add**, **Edit**, or **Delete** menu items and merchandise.  
+   - Toggle **Sold Out** to instantly prevent ordering of out‑of‑stock items.
+
+3. **Configure Ordering Window**  
+   - In **Delivery Windows**, create or modify open periods for customer ordering.  
+   - Use the **Enable/Disable Ordering** toggle to open or close the shop.
+
+4. **Publish News & Announcements**  
+   - Under **News**, create new “cards” with a title, image, and text.  
+   - Saved items appear immediately on the homepage; older items move to the archive.
+
+5. **Review Moderation**  
+   - Under **Reviews**, approve or reject customer reviews before they appear in the homepage ticker.  
+   - Pending reviews display a “Pending” badge in the admin list.
+
+6. **View Orders & Reports**  
+   - Under **Orders**, review incoming orders, export data, or mark fulfilled.  
+   - Use filtering by date or status to monitor sales trends.
+
+<img src="media/readme/admin_products.png" alt="Admin product management" width="800">  
+*Admin interface for creating and editing products.*  
+
+<img src="media/readme/admin_news.png" alt="Admin news management" width="800">  
+*Admin view for publishing news items and managing the archive.*  
+
+
+---
+
+## Manual Testing
+
+Ramen Nakama was manually exercised across all major features, devices, and browsers to ensure a smooth user experience. The table below summarizes each scenario, the expected behavior, the actual result, and any pertinent notes.
+
+| Test Condition                                             | Expected Outcome                                                                                   | Result | Notes                                                       |
+|------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------|-------------------------------------------------------------|
+| **Logo Presence & Home Link**                              | Logo appears in the header of every page; clicking it returns to the homepage.                     | Pass   | Verified on different pages.                              |
+| **Main Navigation**                                        | All primary links (Home, Shop All, Ramen, Sides, Merch, Review Us!) are visible and navigate correctly. | Pass   | Dropdown menus open without overlap.                        |
+| **Mobile Nav Icons**                                       | Search, Account, and Bag icons remain on a single line and shrink as viewport narrows.             | Pass   | Tested down to 320 px width.                                |
+| **Search Functionality**                                   | Entering a keyword returns matching products; no matches yields a “no results” message.            | Pass   | Checked partial and exact matches.                          |
+| **Category Filters**                                       | Selecting “Ramen”, “Sides”, or “Merchandise” filters products accordingly.                         | Pass   | Verified each category combination.                         |
+| **Sorting Options**                                        | Products sort by price (asc/desc) and rating (desc) when chosen.                                   | Pass   | Tested with mixed-price dataset.                            |
+| **Product Detail Page**                                    | Detail page displays name, image, description, price, and “Add to Bag” (unless sold out).          | Pass   | “Sold Out” overlay appears correctly.                       |
+| **Add to Bag**                                             | Clicking “Add to Bag” on product or from listing shows toast and updates bag icon total.            | Pass   | Quantities reflect correctly in toast and badge.            |
+| **Bag Management**                                         | On the Bag page, quantities can be increased/decreased and items removed, updating totals instantly. | Pass   | Edge cases: zero quantity prevented.                        |
+| **Checkout Date Picker**                                   | Only active delivery dates (per OrderWindow) are selectable; past/closed dates disabled.           | Pass   | Verified switching OrderWindow on/off.                      |
+| **Stripe Payment Simulation**                              | Trigger `payment_intent.succeeded` → payment accepted, order created, confirmation email logged.   | Pass   | Used Stripe CLI triggers.                                   |
+| **Order Confirmation**                                     | After payment, user sees a confirmation page showing the order number and summary.                 | Pass   | Order number matches DB record.                             |
+| **Order History**                                          | Profile “Order History” lists all past orders with clickable order numbers linking to details.      | Pass   | Empty state shows “No orders yet.”                          |
+| **Review Submission**                                      | Logged‑in users can submit reviews; invalid (blank) input raises form errors.                      | Pass   | Redirect to “Thank You” page on success.                    |
+| **Review Moderation & Ticker**                             | Admin‑approved reviews appear in homepage ticker; unapproved reviews do not.                       | Pass   | Ticker cycles smoothly; pending reviews hidden.             |
+| **Review Edit/Delete**                                     | Editing a review resets it to “Pending”; deleting removes it from both profile and ticker.          | Pass   | Confirm dialog appears before deletion.                     |
+| **News Item Display**                                      | Latest news item (title, image, excerpt) appears on homepage; “Read More” links to archive.         | Pass   | Link navigates correctly to archive view.                   |
+| **News Archive Layout**                                    | Archive pages paginate items; odd/even rows alternate image/text in two columns, responsive on mobile. | Pass   | Verified on desktop and mobile.                             |
+| **Responsive Breakpoints**                                 | Layout adjusts at ≥1200 px (two‑column), 768–1199 px (stacked where necessary), ≤767 px (single‑column). | Pass   | No horizontal scroll at any breakpoint.                     |
+| **Cross‑Browser Compatibility**                            | Core flows work identically in Chrome, Firefox, Safari, and Edge on desktop and mobile.           | Pass   | Interaction tests performed on each.                        |
+| **Image Alt Text**                                         | All product, news, and decorative images include descriptive `alt` attributes.                     | Pass   | Screen-reader inspection confirmed.                         |
+| **Keyboard Navigation**                                    | Users can tab through links, buttons, forms, and dropdowns; Enter/Escape operate menus.            | Pass   | Focus styles visible; no dead‑ends in navigation.           |
+
+
+---
+
+## User Stories & Acceptance Criteria
+
+### 1. Customer – Browse & Order  
+**Story:**  
+As a customer, I want to browse all products, add items to my bag, select a delivery window, and pay via Stripe so that I can complete my order quickly and securely.  
+**Acceptance Criteria:**  
+- Can view and filter products by category or search.  
+- Can add/remove items in a bag and see real‑time totals.  
+- Can choose a valid delivery date and pay with Stripe.  
+**Fulfilment:**  
+- “Shop All” dropdown, category pages, and search icon; bag page with quantity controls; checkout form prefilled with profile data, date picker restricted by `OrderWindow`, Stripe integration, confirmation page, and order history.
+
+---
+
+### 2. Customer – Account Management  
+**Story:**  
+As a customer, I want to register, log in, and manage my delivery details so that I have a personalized ordering experience.  
+**Acceptance Criteria:**  
+- Can sign up, verify email, and log in.  
+- Can view and update default delivery information.  
+- Can see past orders.  
+**Fulfilment:**  
+- Django‑Allauth for signup/login; profile page with `UserProfileForm` for address, table of past orders with links to details.
+
+---
+
+### 3. Customer – Review Workflow  
+**Story:**  
+As a customer, I want to submit, edit, or delete my reviews so that I can share and update feedback on my orders.  
+**Acceptance Criteria:**  
+- Only logged‑in users access the review form.  
+- After submit, see a “Thank You” page.  
+- Can edit/delete reviews from profile; edits reset approval.  
+**Fulfilment:**  
+- `submit_review` view with `@login_required` and redirect to `review_success`; profile lists `Review` objects with Edit/Delete links; `review_edit` view sets `approved=False`; admin approves before homepage ticker.
+
+---
+
+### 4. Admin – Product & Inventory Management  
+**Story:**  
+As the site owner, I want to manage products and mark sold‑out items so that availability is accurate.  
+**Acceptance Criteria:**  
+- Can create/edit/delete products in admin.  
+- Sold‑out products cannot be ordered and display an overlay.  
+**Fulfilment:**  
+- `Product` registered in Django admin; `.sold-out-overlay` CSS greys out images and hides “Add to Bag” buttons.
+
+---
+
+### 5. Admin – Ordering Window Control  
+**Story:**  
+As the site owner, I want to open/close ordering windows and set announcement messages so that customers know when they can order.  
+**Acceptance Criteria:**  
+- Can toggle an `OrderWindow.active` flag and edit `ordering_message`.  
+- Homepage banner and CTAs appear only when active.  
+**Fulfilment:**  
+- `OrderWindow` model in admin; `ordercontrol.context_processors.order_status` injects current window; templates conditionally render banner and “Slurp Now” button.
+
+---
+
+### 6. Admin – News & Announcements  
+**Story:**  
+As the site owner, I want to publish news items and archive older ones so that I can keep customers informed.  
+**Acceptance Criteria:**  
+- Can add title, image, and content for news in admin.  
+- Latest item shows on homepage; archive paginates in alternating layout.  
+**Fulfilment:**  
+- `News` model registered; homepage partial queries latest item; `NewsArchiveView` with pagination and `news_archive.html` flex layout alternating image/text.
+
+---
+
+### 7. Admin – Review Moderation  
+**Story:**  
+As the site owner, I want to approve or reject reviews so that only appropriate feedback appears.  
+**Acceptance Criteria:**  
+- Admin can toggle `Review.approved`.  
+- Only approved reviews appear in the homepage ticker.  
+**Fulfilment:**  
+- `Review` model in admin list with approval toggle; `approved_reviews` context processor filters for homepage; jQuery cycle shows approved reviews only.
+
+---
+
+### 8. Cross‑Cutting – Responsiveness & Accessibility  
+**Story:**  
+As any user, I want the site to adapt across devices and support keyboard navigation and sufficient color contrast.  
+**Acceptance Criteria:**  
+- Layout reflows at Bootstrap breakpoints; icons and text scale for mobile.  
+- All interactive elements accessible via keyboard; color contrast meets WCAG AA.  
+**Fulfilment:**  
+- Bootstrap grid with custom media queries; mobile nav flex-nowrap; semantic HTML with focus styles; contrast ratios verified with WebAIM tools.
+
 
 ---
 
@@ -330,9 +556,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- **Mentor:** Special thanks to [Your Mentor's Name] for guidance.
-- **Team Members:** Thanks to [Name 1], [Name 2], and [Name 3] for their contributions.
-- **Inspiration:** Inspired by local Bristol cuisine culture and innovative delivery concepts.
+I would like to extend my sincere thanks to:
+
+- **My Tutor at WAES, Komal Karir:** For excellent tutorage, invaluable guidance and encouragement.
+- **My Code Institite Mentor, Spencer Barribal:** For your insights and support.
+- **My Fellow L5 Web Application Development Students:** For your collaboration and feedback.
 
 ---
 
@@ -424,3 +652,63 @@ Skia CC Extended Bold
 font-family: "skia-cc-extended", sans-serif;
 font-weight: 700;
 font-style: normal;
+
+<p style="font-size: 10px">Image Source: <a href="https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious">Scrandit via The Bristol Sauce</a></p>
+
+### Responsive Previews
+
+| Desktop View | Tablet View | Mobile View |
+| :---: | :---: | :---: |
+| <img src="assets/images/desktop_homepage.png" alt="Desktop Homepage" width="300"> | <img src="assets/images/tablet_layout.png" alt="Tablet Layout" width="200"> | <img src="assets/images/mobile_homepage.png" alt="Mobile Homepage" width="120"> |
+| *At 1440px with full two‑column layout.* | *At 768px with stacked columns.* | *At 375px single‑column flow.* |
+
+
+erDiagram
+    USER ||--|| USERPROFILE : has
+    USER ||--o{ REVIEW : writes
+    USER ||--o{ \"ORDER\" : places
+
+    USERPROFILE ||--o{ \"ORDER\" : owns
+
+    \"ORDER\" ||--o{ ORDERLINEITEM : contains
+    ORDERLINEITEM }o--|| PRODUCT : refers_to
+
+    PRODUCT {
+      PK id
+      name
+      price
+      image
+      category
+      is_sold_out
+    }
+
+    REVIEW {
+      PK id
+      user_id
+      review_text
+      created_at
+      approved
+    }
+
+    NEWS {
+      PK id
+      title
+      content
+      image
+      created_at
+    }
+
+    ORDERWINDOW {
+      PK id
+      active
+      ordering_message
+      start_date
+      end_date
+    }
+
+    %% relationships
+    USER ||--o{ REVIEW : \"1-to-many\"
+    USER ||--o{ \"ORDER\" : \"1-to-many\"
+    \"ORDER\" ||--o{ ORDERLINEITEM : \"1-to-many\"
+    ORDERLINEITEM }o--|| PRODUCT : \"many-to-1\"
+    USER ||--|| USERPROFILE : \"1-to-1\"

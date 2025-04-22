@@ -119,10 +119,10 @@
     </div>
     <div id="delivery-banner" class="row text-center">
       <div class="col banner text-white">
-        <h4 class="logo-font my-1"><strong>Free delivery on orders over £{{ free_delivery_threshold }}!</strong></h4>
+        <h4 class="banner-text logo-font my-1"><strong>Free delivery on orders over £{{ free_delivery_threshold }}!</strong></h4>
         {# Order and Delivery Notification #}
         {% if order_window %}
-          <div class="col-12 order-banner">
+          <div class="order-status banner-text col-12 order-banner">
             {{ order_window.ordering_message }}
           </div>
         {% endif %}
@@ -162,7 +162,7 @@
         {# Reviews Column: Hidden on mobile, visible on large screens #}
         <div class="col-12 col-lg-8 d-none d-lg-block">
           {% if approved_reviews %}
-            <div id="review-ticker" class="py-2">
+            <div id="review-ticker" class="footer-text py-2">
               {% for review in approved_reviews %}
                 <div class="review-item {% if not forloop.first %}hidden-review{% endif %}">
                   {{ review.review_text }} - <strong>{{ review.user.username }}</strong>
@@ -174,7 +174,7 @@
           {% endif %}
         </div>
         {# Social Media Links Column: Always visible, centered on mobile and right-aligned on large screens #}
-        <div class="col-12 col-lg-4 text-center text-light mt-3 mt-lg-0">
+        <div class="footer-text col-12 col-lg-4 text-center text-light mt-3 mt-lg-0">
           <a href="https://www.instagram.com/yourhandle" target="_blank" class="mx-2">
             <i class="fab fa-instagram fa-2x text-light"></i>
           </a>
