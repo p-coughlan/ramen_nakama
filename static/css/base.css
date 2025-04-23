@@ -507,6 +507,31 @@ h1 {
     font-style: italic !important;
 }
 
+/* ========== 404 Page Styles ========== */
+
+.error-404 {
+    padding-top: 400px;              /* push content below fixed navbar */
+  }
+  
+  .error-404 .display-1 {
+    font-size: 6rem;
+    text-shadow: 2px 2px 4px #1e234d;
+  }
+  
+  .btn-pink {
+    background-color: #e75b66;       /* Ramen Pink */
+    color: #fff;
+    border: 3px solid #1e234d;       /* Ramen Blue border */
+    transition: background-color .2s ease;
+  }
+  
+  .btn-pink:hover,
+  .btn-pink:focus {
+    background-color: #d04e5a;
+    color: #fff;
+  }
+  
+
 /* Color Palette Notes:
    Ramen Blue  : #1e234d  (rgb(30, 35, 77))
    Ramen Pink  : #e75b66  (rgb(231, 91, 102))
