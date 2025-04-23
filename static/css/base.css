@@ -510,7 +510,7 @@ h1 {
 /* ========== 404 Page Styles ========== */
 
 .error-404 {
-    padding-top: 400px;              /* push content below fixed navbar */
+    margin-top: 200px;
   }
   
   .error-404 .display-1 {
