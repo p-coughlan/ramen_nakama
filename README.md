@@ -409,13 +409,107 @@ As any user, I want the site to adapt across devices and support keyboard naviga
 
 ## Entity Relationship Diagram (ERD)
 
-<img src="assets/images/erd_placeholder.jpg" alt="ERD diagram" width="600">
+This diagram illustrates the relationships between our core data models:
 
-**Explanation:**
-- **Products:** Contains details about each ramen dish.
-- **Orders:** Captures order details and status.
-- **Reviews:** Stores customer reviews with a moderation flag.
-- **News:** Maintains news updates for the site.
+- **UserProfile** extends Django’s built-in User and can have multiple **Order**s.  
+- Each **Order** comprises one or more **OrderLineItem**s, which reference individual **Product**s.  
+- **Product**s are grouped by **Category** for easy filtering and display.  
+- Stand-alone models **News** and **OrderWindow** power the homepage announcements and ordering window logic.  
+- **Review** entries link back to the User who submitted them, appearing in both the profile and the homepage ticker once approved.
+
+<img src="custom-erd.png" alt="ERD diagram" width="800">
+
+### Under the Hood – Django’s Built-in Models
+
+In addition to our six custom apps, the “Full ERD” includes Django’s core tables that power authentication, permissions, admin, and sessions:
+
+- **auth_user**  
+  The primary user table holding credentials, email, and basic profile info.
+
+- **auth_group** & **auth_permission**  
+  Define named role groups and granular permissions; users can belong to any number of groups, each granting a set of permissions.
+
+- **django_content_type**  
+  Tracks all installed models (by app and model name) so that permissions and generic relations can reference them dynamically.
+
+- **django_session**  
+  Persists logged-in sessions, enabling “remember me” and cross-request authentication.
+
+- **admin_log**  
+  Records all CRUD actions taken in the Django admin interface, linking back to both the actor (auth_user) and the affected content type.
+
+By layering our **UserProfile**, **Order**, **Product**, **News**, **OrderWindow**, and **Review** models on top of Django’s builtin tables, we reuse battle-tested authentication and permission logic while keeping our business-specific data neatly separated.  
+
+<img src="grouped_erd.png" alt="ERD diagram" width="800">
+
+## Data Models
+
+### 1. UserProfile (`profiles/models.py`)
+- **Extends** Django’s built-in `User` via a one-to-one link.  
+- Stores default delivery info (phone, street, city, country, etc.).  
+- A `post_save(User)` signal automatically creates or updates the profile on registration.  
+- **Relation:** `Order.user_profile` → lets you fetch a customer’s past orders via `user_profile.orders.all()`.
+
+---
+
+### 2. Category & Product (`products/models.py`)
+- **Category**  
+  - Lookup table for product groupings (e.g. “Meat Ramen,” “Sides,” “Merchandise”).  
+- **Product**  
+  - ForeignKey → `Category`  
+  - Fields: `sku`, `name`, `description`, `price`, optional `rating`, image(s), and `sold_out` flag.  
+- **Relation:** `OrderLineItem.product` → ties each line-item back to its `Product`.
+
+---
+
+### 3. Order & OrderLineItem (`checkout/models.py`)
+- **Order**  
+  - UUID-based `order_number` generated on save.  
+  - Captures buyer details, timestamp, Stripe payment ID, and raw bag JSON.  
+  - Methods to compute `order_total`, conditional delivery fees, and `grand_total`.  
+  - **Relation:** FK → `UserProfile` (nullable), `related_name='orders'`.  
+- **OrderLineItem**  
+  - FK → `Order` (`related_name='lineitems'`) and FK → `Product`.  
+  - Auto-calculates `lineitem_total = product.price × quantity` in `save()`.  
+  - **Relation:** Enables `order.lineitems.aggregate(Sum('lineitem_total'))`.
+
+---
+
+### 4. News (`news/models.py`)
+- Fields: `title`, `content`, optional `ImageField(upload_to='news/')`, `published_date` (default `now`), and `featured` flag.  
+- Meta: `ordering = ['-published_date']` for newest-first.  
+- **Relation:** No foreign keys—used in homepage “latest news” and paginated archive.
+
+---
+
+### 5. OrderWindow (`ordercontrol/models.py`)
+- Controls live ordering windows:  
+  - `is_open` boolean + `next_delivery_date`.  
+  - `is_ordering_active` property returns `True` only if ordering is open and now is more than 48 hours before `next_delivery_date`.  
+  - `ordering_message` property generates context-aware banners (“Place your order for…”, “Ordering is closed…”).  
+- **Relation:** Exposed via a context processor to every template to toggle banners and CTAs.
+
+---
+
+### 6. Review (`reviews/models.py`)
+- FK → Django `User`, `review_text`, `created_at`, `approved` flag.  
+- Workflow:  
+  1. User submits → saved with `approved=False`.  
+  2. Admin toggles `approved=True` in Django admin.  
+  3. Approved reviews injected into the homepage ticker via context processor.  
+- **Relation:** Linked to `User`, shown in both profile and homepage ticker.
+
+---
+
+### Overall Relationships
+1. **Users** → one-to-one → **UserProfile**  
+2. **UserProfile** → one-to-many → **Order**  
+3. **Order** → one-to-many → **OrderLineItem** → many-to-one → **Product**  
+4. **Product** → many belongs to → **Category**  
+5. **News** and **OrderWindow** are standalone models powering site content and ordering logic.  
+6. **Review** → FK → **User**, displaying approved feedback site-wide.
+
+This modular structure leverages Django’s auth system, cleanly separates concerns, and remains readily extensible (e.g. attaching reviews to products or adding a Wishlist model in the future).  
 
 ---
 
