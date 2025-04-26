@@ -129,8 +129,16 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 
 ### Responsive Behavior  
 - **Container Width:** Max‑width set to 80% on extra‑large screens (≥1200px).  
-- **Header Padding:** Adjusts between desktop (`164px`) and mobile (`116px`) to accommodate fixed elements.  
+- **Header Padding:** Adjusts between desktop and mobile to accommodate fixed elements.  
 - **Button & Text Scaling:** Font sizes and padding adjust via media queries to ensure tap‑target accessibility on mobile.  
+
+
+### Responsive Previews
+
+| Desktop View | Tablet View | Mobile View |
+| :---: | :---: | :---: |
+| <img src="media/readme/responsive-desktop.jpg" alt="Desktop Homepage" height="300"> | <img src="media/readme/responsive-tablet.jpg" alt="Tablet Homepage" height="300"> | <img src="media/readme/responsive-mobile.jpg" alt="Mobile Homepage" height="300"> |
+| *At 1440px with full two‑column layout.* | *At 768px with stacked columns.* | *At 375px single‑column flow.* |
 
 
 ### Screenshots
