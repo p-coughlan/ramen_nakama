@@ -523,6 +523,10 @@ This modular structure leverages Django’s auth system, cleanly separates conce
 
 ## Essential Future Improvements
 
+- **Order Window Optimistaion:**  
+  Create a custom interface outside of the Django admin panel that the superuser can use to create, edit and delete order window information.
+  At present the store is marked as 'open for orders' at time of creating the order window and delivery slot with no option for modifying existing windows.
+
 - **Enhanced Payment Flow:**  
   Integrate more robust error handling and notifications for payment issues.
   
@@ -637,6 +641,62 @@ This modular structure leverages Django’s auth system, cleanly separates conce
     - **Fix:** Update the template to use the correct field:  
       ```django
       Submitted on {{ review.created_at|date:"F j, Y" }}
+      ```
+
+11. **Missing Ordering Banner When No OrderWindow Exists**  
+    - **Problem:** The “order-banner” div renders nothing if there is no `OrderWindow` record.  
+    - **Diagnosis:** `OrderWindow.objects.first()` returns `None`, so the `{% if order_window %}` block never displays.  
+    - **Fix:** Add an `else` clause in template to show a default message when `order_window` is `None`:
+      ```django
+      {% if order_window %}
+        <div class="order-banner">
+          {{ order_window.ordering_message }}
+        </div>
+      {% else %}
+        <div class="order-banner">
+          Ordering is currently closed.
+        </div>
+      {% endif %}
+      ```
+
+12. **Context Processor Doesn’t Supply a Default Window**  
+    - **Problem:** Having to handle `None` in every template is repetitive and error-prone.  
+    - **Diagnosis:** The `order_status` context processor passes `None` when there are no `OrderWindow` records, so downstream templates must check for it.  
+    - **Fix:** Update the context processor so it always provides an object with an `ordering_message`:
+      ```python
+      # ordercontrol/context_processors.py
+      from .models import OrderWindow
+      from types import SimpleNamespace
+
+      def order_status(request):
+          window = OrderWindow.objects.first()
+          if not window:
+              # Provide a dummy object with the same API
+              window = SimpleNamespace(ordering_message="Ordering is currently closed.")
+          return {'order_window': window}
+      ```
+
+13. **Stale “Next Delivery” Message After the Date Has Passed**  
+    - **Problem:** Once the `next_delivery_date` passes, `ordering_message` still falls into the `elif self.next_delivery_date` branch and displays the old date.  
+    - **Diagnosis:** The `ordering_message` property only checks `is_ordering_active` and then “does the date exist?”, without verifying that the date is still in the future.  
+    - **Fix:** Update `ordering_message` to first check whether `next_delivery_date` is already past, e.g.:
+      ```python
+      @property
+      def ordering_message(self):
+          today = timezone.now().date()
+          if self.next_delivery_date and today > self.next_delivery_date:
+              return "Ordering is now closed."
+          if self.is_ordering_active:
+              return (
+                  f"Place your order now for delivery on "
+                  f"{self.next_delivery_date:%B %d, %Y}. Order processing closes 48 hours before."
+              )
+          if self.next_delivery_date:
+              return (
+                  "Ordering is currently closed. "
+                  f"Next delivery is scheduled for {self.next_delivery_date:%B %d, %Y}."
+              )
+          return "Ordering is currently closed."
       ```
 
 ---

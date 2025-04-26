@@ -22,11 +22,26 @@ class OrderWindow(models.Model):
 
     @property
     def ordering_message(self):
+        today = timezone.now().date()
+
+        # 1) If the delivery date is today or in the past, just say closed
+        if self.next_delivery_date and self.next_delivery_date <= today:
+            return "Ordering is now closed."
+
+        # 2) If ordering is still active (more than 48 hours before next_delivery_date)…
         if self.is_ordering_active:
-            return (f"Place your order now for delivery on {self.next_delivery_date.strftime('%B %d, %Y')}. "
-                    "Order processing will be closed 48 hours earlier.")
-        elif self.next_delivery_date:
-            return (f"Ordering is currently closed. Next delivery is scheduled for "
-                    f"{self.next_delivery_date.strftime('%B %d, %Y')}.")
-        else:
-            return "Ordering is currently closed."
+            return (
+                f"Place your order now for delivery on "
+                f"{self.next_delivery_date.strftime('%B %d, %Y')}. "
+                "Order processing will be closed 48 hours earlier."
+            )
+
+        # 3) If ordering is closed but there’s a future delivery date scheduled…
+        if self.next_delivery_date:
+            return (
+                "Ordering is currently closed. Next delivery is scheduled for "
+                f"{self.next_delivery_date.strftime('%B %d, %Y')}."
+            )
+
+        # 4) No next_delivery_date set at all
+        return "Ordering is currently closed."
