@@ -202,40 +202,52 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 1. **Register & Log In**  
    - Click “My Account” in the navbar.  
    - Choose **Register** (or **Login** if you already have an account).  
-   - Fill out the signup form (username, email, password), then verify via the confirmation email.
+   - Fill out the signup form (username, email, password), then verify via the confirmation email.  
+
+   <img src="media/readme/signup.jpg" alt="Signup Form" width="600">
 
 2. **Browse & Search**  
-   - From the homepage, click **Shop All** or use the search icon to find specific dishes or merchandise.  
-   - Filter by category (Ramen, Sides, Merchandise) or sort by price/rating.
+   - From the homepage, click **Shop All** or to filter by price/rating/category or all products.
+   - Navigate to main nav menu items and filter by drop down options such as vegan/vegetarian/meat products (example from Ramen dropdown).  
+
+   <img src="media/readme/browse.jpg" alt="Browse Products" width="600">
 
 3. **Add to Bag**  
    - On a product page, select any available options (e.g. size) and click **Add to Bag**.  
-   - A toast notification will confirm your selection.
+   - A toast notification will confirm your selection.  
+
+   <img src="media/readme/detail.jpg" alt="Adding to Bag" width="600">
 
 4. **View & Edit Bag**  
    - Click the bag icon in the navbar to view your current order.  
-   - Adjust quantities or remove items directly in the bag summary.
+   - Adjust quantities or remove items directly in the bag summary.  
+
+   <img src="media/readme/edit-bag.jpg" alt="Editing bag in bag summary" width="600">
 
 5. **Checkout**  
    - From the bag page, click **Checkout**.  
    - Enter your saved delivery details or update your address.  
    - Select a delivery date from the open ordering window.  
-   - Complete payment securely via Stripe.
+   - Complete payment securely via Stripe.  
+
+   <img src="media/readme/checkout.jpg" alt="Editing bag in bag summary" width="600">
 
 6. **Order Confirmation & History**  
    - After successful payment, you’ll see a confirmation page with an order number.  
-   - In your profile, click **Order History** to review past orders and quickly reorder if desired.  
+   - In your profile, click **Order History** to review past orders.  
+
+   <img src="media/readme/ordering.jpg" alt="Ordering Process" width="600">
 
 7. **Submit a Review**  
    - Once your order arrives, navigate to **Review Us!** in the navbar (or from your profile).  
    - Fill out the free‑form review form and submit.  
    - You’ll be redirected to a “Thank You” page confirming your submission.  
 
-<img src="media/readme/customer_flow_1.png" alt="Customer browsing products" width="800">  
-*Customer browsing the menu and adding items to their bag.*  
+   <img src="media/readme/review.jpg" alt="Leaving a Review" width="600">
+   <img src="media/readme/review-2.jpg" alt="Review Success" width="600">
 
-<img src="media/readme/customer_flow_2.png" alt="Customer checkout page" width="800">  
-*Checkout form with delivery date picker and Stripe payment.*  
+   *Approved review displayed in the footer*  
+   <img src="media/readme/review-display.jpg" alt="Review displayed in footer" width="600">
 
 ---
 
@@ -246,23 +258,36 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 
 2. **Manage Products**  
    - Under **Products**, you can **Add**, **Edit**, or **Delete** menu items and merchandise.  
-   - Toggle **Sold Out** to instantly prevent ordering of out‑of‑stock items.
+   - Toggle **Sold Out** to instantly prevent ordering of out‑of‑stock items.  
+   <img src="media/readme/edit-products.jpg" alt="Product Management" width="600">
+   <img src="media/readme/add-product.jpg" alt="Product Management" width="600">
 
 3. **Configure Ordering Window**  
    - In **Delivery Windows**, create or modify open periods for customer ordering.  
-   - Use the **Enable/Disable Ordering** toggle to open or close the shop.
+   - Use the **Enable/Disable Ordering** toggle to open or close the shop.  
+   <img src="media/readme/order-window.jpg" alt="Creating and modifying shop open status and delivery date" width="600">
+   <img src="media/readme/order-window2.jpg" alt="Creating and modifying shop open status and delivery date" width="600">
 
 4. **Publish News & Announcements**  
    - Under **News**, create new “cards” with a title, image, and text.  
-   - Saved items appear immediately on the homepage; older items move to the archive.
+   - Saved items appear immediately on the homepage; older items move to the archive.  
+   <img src="media/readme/news.jpg" alt="News management in Django admin" width="600">
+   <img src="media/readme/news2.jpg" alt="News management in Django admin" width="600">
 
 5. **Review Moderation**  
    - Under **Reviews**, approve or reject customer reviews before they appear in the homepage ticker.  
-   - Pending reviews display a “Pending” badge in the admin list.
+   - Pending reviews display a “Pending” badge in the admin list.  
+   <img src="media/readme/approve-review.jpg" alt="Review management in Django admin" width="600">
 
 6. **View Orders & Reports**  
    - Under **Orders**, review incoming orders, export data, or mark fulfilled.  
-   - Use filtering by date or status to monitor sales trends.
+   - Key information such as: order number, user profile, date, name, email address, full postal address, delivery cost, order total, grand total and Stripe pid.  
+   <img src="media/readme/orders.jpg" alt="Order management in Django admin" width="600">
+   <img src="media/readme/orders2.jpg" alt="Order management in Django admin" width="600">
+   
+   
+
+
 
 <img src="media/readme/admin_products.png" alt="Admin product management" width="800">  
 *Admin interface for creating and editing products.*  
@@ -302,6 +327,15 @@ Ramen Nakama was manually exercised across all major features, devices, and bro
 | **Image Alt Text**                                         | All product, news, and decorative images include descriptive `alt` attributes.                     | Pass   | Screen-reader inspection confirmed.                         |
 | **Keyboard Navigation**                                    | Users can tab through links, buttons, forms, and dropdowns; Enter/Escape operate menus.            | Pass   | Focus styles visible; no dead‑ends in navigation.           |
 
+### Stripe Webhook Testing
+
+To verify and troubleshoot payment flows during development, the following Stripe CLI commands were used to simulate webhook events:
+
+- `stripe trigger payment_intent.created`
+- `stripe trigger payment_intent.succeeded`
+- `stripe trigger payment_intent.payment_failed`
+- `stripe trigger charge.succeeded`
+- `stripe trigger charge.failed`
 
 ---
 
@@ -401,18 +435,17 @@ As any user, I want the site to adapt across devices and support keyboard naviga
 
 ## Design Considerations
 
-- **Architectural Decisions:**  
-  Modular Django apps for scalability and maintainability.
+- **Modular Architecture:**  
+  Ramen Nakama is split into focused Django “apps” (e.g. products, checkout, reviews, news, ordercontrol, profiles). This separation of concerns makes it easy to extend features—like adding a wishlist or ratings—without bloating unrelated code. Shared logic (context processors, custom storage backends) keeps templates and views DRY and maintainable.
   
 - **Responsive Design:**  
-  Bootstrap 4 ensures the site adapts to all device types.
-  
-- **User Experience:**  
-  Minimal clicks for ordering and submitting reviews with clear feedback.
+  Built on Bootstrap 4’s 12-column grid, every page—from the home news ticker to the two-column archive—flows seamlessly across desktop, tablet, and phone. Custom media queries fine-tune header padding, button sizing, and text scales to ensure tap-targets remain accessible and legible on small screens.
 
-- **Deployment & Maintenance:**  
-  Deployed on Heroku, with AWS S3 for static and media file hosting.
+- **Streamlined User Experience:**  
+  Customers can place an order in just a few clicks: browse (or search) → add to bag → choose delivery window → Stripe checkout → confirmation. Reviews submit via a crisp Crispy-Forms layout, immediately redirecting to a “Thank You” page. Admins manage content and feedback from a unified Django Admin interface, with clear approval flows and live status banners.
 
+- **Robust Deployment & Maintenance:**  
+  Code is versioned in GitHub and deployed via Heroku. All static assets and media uploads are stored on AWS S3—served directly from the S3 bucket in production, and from the local static/ directory in development. Environment variables manage sensitive keys (Django secret, AWS credentials, Stripe keys), ensuring a secure, repeatable deploy process.
 ---
 
 ## Entity Relationship Diagram (ERD)
@@ -527,8 +560,15 @@ This modular structure leverages Django’s auth system, cleanly separates conce
   Create a custom interface outside of the Django admin panel that the superuser can use to create, edit and delete order window information.
   At present the store is marked as 'open for orders' at time of creating the order window and delivery slot with no option for modifying existing windows.
 
-- **Enhanced Payment Flow:**  
-  Integrate more robust error handling and notifications for payment issues.
+- **Custom access to Django admin:**  
+  At present, the Django admin panel is only accesible by adding `/admin` to the address. For example: 'https://milestone-four-ff783f75758e.herokuapp.com/admin'
+  Create a visible link in the 'staff approved' dropdown menu.
+
+- **Custom News Management:**  
+  At present, the News management is accessible via the Django admin panel - create a custom feature for the superuser to **Add**, **Edit**, and **Delete** news items. This will be styled in-line with the Product Management section.
+
+- **Correct Time in Django Admin:**  
+  Django admin is currently notifying the user that we are 1 hour ahead of server time - correct this.
   
 - **Mobile Optimization:**  
   Further refine mobile UX beyond Bootstrap defaults.
@@ -701,12 +741,71 @@ This modular structure leverages Django’s auth system, cleanly separates conce
 
 ---
 
-## References and Credits
+## References & Credits
 
-- **Django Documentation:** [https://docs.djangoproject.com/](https://docs.djangoproject.com/)
-- **Stripe API Reference:** [https://stripe.com/docs/api](https://stripe.com/docs/api)
-- **Bootstrap Documentation:** [https://getbootstrap.com/](https://getbootstrap.com/)
-- **Scrandit Image Source:** [https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious](https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious)
+- **Django Documentation**  
+  Core framework and builtin auth, ORM, templating, admin, etc.  
+  https://docs.djangoproject.com/
+
+- **Bootstrap v4.4.1**  
+  Grid system, components, utilities and responsive design.  
+  https://getbootstrap.com/
+
+- **jQuery**  
+  DOM manipulation, event handling and the review ticker logic.  
+  https://jquery.com/
+
+- **Popper.js**  
+  Positioning engine for Bootstrap dropdowns and tooltips.  
+  https://popper.js.org/
+
+- **Font Awesome**  
+  Scalable vector icons for UI elements (search, user, cart).  
+  https://fontawesome.com/
+
+- **Adobe Fonts (Skia CC)**  
+  Custom brand typography via Typekit.  
+  https://use.typekit.net/sip3axg.css
+
+- **Stripe API & CLI**  
+  Payment integration and webhook simulation commands.  
+  https://stripe.com/docs/api
+
+- **django-allauth**  
+  User registration, login/logout, social authentication.  
+  https://django-allauth.readthedocs.io/
+
+- **django-crispy-forms**  
+  Form layouts and styling integrations.  
+  https://django-crispy-forms.readthedocs.io/
+
+- **django-storages**  
+  AWS S3 backend for static and media file storage.  
+  https://django-storages.readthedocs.io/
+
+- **django-countries**  
+  Country selection field in user profiles and checkout forms.  
+  https://github.com/SmileyChris/django-countries
+
+- **django-extensions**  
+  Development utilities (shell_plus, graph_models, etc.).  
+  https://django-extensions.readthedocs.io/
+
+- **Boutique Ado Walkthrough (Code Institute)**  
+  Initial project template and structure inspiration.  
+  https://learn.codeinstitute.net/dashboard
+
+- **Scrandit Image Source**  
+  Editorial photo used in the README header.  
+  https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious
+
+- **Blank T-Shirt Image Source**  
+  Placeholder merchandise photo.  
+  https://www.firelabel.co.uk/personalised-t-shirts/mens/crew-neck-t-shirts/61212-fruit-of-the-loom-heavy-cotton-t-shirt.html
+
+- **All Product Images**  
+  Original photography by Patrick Coughlan
+
 
 ---
 
@@ -725,152 +824,3 @@ I would like to extend my sincere thanks to:
 - **My Fellow L5 Web Application Development Students:** For your collaboration and feedback.
 
 ---
-
-### NOTES:
-
-- **Webhook Testing for Stripe:**  
-  - `stripe trigger payment_intent.created`  
-  - `stripe trigger payment_intent.succeeded`  
-  - `stripe trigger payment_intent.payment_failed`  
-  - `stripe trigger charge.succeeded`  
-  - `stripe trigger charge.failed`
-
-- **Extra Model Ideas:**  
-  - Review, Wishlist, Mailing List, and "How did you hear about us"
-
-- **Font Information (Skia):**  
-  - *Skia CC Regular:* `font-family: "skia-cc", sans-serif; font-weight: 400;`  
-  - *Skia CC Bold:* `font-family: "skia-cc", sans-serif; font-weight: 700;`  
-  - *(Additional variants as needed)*
-
-
-
-------------------------------------
-NOTES:
-
-Webhook testing: https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+BA101N+4/courseware/4201818c00aa4ba3a0dae243725f6e32/09698fc21d8045c79a5d639c90df8cec/?child=first
-
-Stripe Triggers:
-stripe trigger payment_intent.created
-stripe trigger payment_intent.succeeded
-stripe trigger payment_intent.payment_failed
-stripe trigger charge.succeeded
-stripe trigger charge.failed
-
-Extra model ideas:
-Review
-Wishlist
-Mailing List
-How did you hear about us
-
-Scrandit img source:
-https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious
-
-Skia CC Regular
-font-family: "skia-cc", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Bold
-font-family: "skia-cc", sans-serif;
-font-weight: 700;
-font-style: normal;
-Skia CC Compressed Regular
-font-family: "skia-cc-compressed", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Compressed Bold
-font-family: "skia-cc-compressed", sans-serif;
-font-weight: 700;
-font-style: normal;
-Skia CC Condensed Regular
-font-family: "skia-cc-condensed", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Condensed Bold
-font-family: "skia-cc-condensed", sans-serif;
-font-weight: 700;
-font-style: normal;
-Skia CC Semi Condensed Regular
-font-family: "skia-cc-semi-condensed", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Semi Condensed Bold
-font-family: "skia-cc-semi-condensed", sans-serif;
-font-weight: 700;
-font-style: normal;
-Skia CC Wide Regular
-font-family: "skia-cc-wide", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Wide Bold
-font-family: "skia-cc-wide", sans-serif;
-font-weight: 700;
-font-style: normal;
-Skia CC Extended Regular
-font-family: "skia-cc-extended", sans-serif;
-font-weight: 400;
-font-style: normal;
-Skia CC Extended Bold
-font-family: "skia-cc-extended", sans-serif;
-font-weight: 700;
-font-style: normal;
-
-<p style="font-size: 10px">Image Source: <a href="https://thebristolsauce.substack.com/p/ramen-nakama-the-scrandit-serious">Scrandit via The Bristol Sauce</a></p>
-
-### Responsive Previews
-
-| Desktop View | Tablet View | Mobile View |
-| :---: | :---: | :---: |
-| <img src="assets/images/desktop_homepage.png" alt="Desktop Homepage" width="300"> | <img src="assets/images/tablet_layout.png" alt="Tablet Layout" width="200"> | <img src="assets/images/mobile_homepage.png" alt="Mobile Homepage" width="120"> |
-| *At 1440px with full two‑column layout.* | *At 768px with stacked columns.* | *At 375px single‑column flow.* |
-
-
-erDiagram
-    USER ||--|| USERPROFILE : has
-    USER ||--o{ REVIEW : writes
-    USER ||--o{ \"ORDER\" : places
-
-    USERPROFILE ||--o{ \"ORDER\" : owns
-
-    \"ORDER\" ||--o{ ORDERLINEITEM : contains
-    ORDERLINEITEM }o--|| PRODUCT : refers_to
-
-    PRODUCT {
-      PK id
-      name
-      price
-      image
-      category
-      is_sold_out
-    }
-
-    REVIEW {
-      PK id
-      user_id
-      review_text
-      created_at
-      approved
-    }
-
-    NEWS {
-      PK id
-      title
-      content
-      image
-      created_at
-    }
-
-    ORDERWINDOW {
-      PK id
-      active
-      ordering_message
-      start_date
-      end_date
-    }
-
-    %% relationships
-    USER ||--o{ REVIEW : \"1-to-many\"
-    USER ||--o{ \"ORDER\" : \"1-to-many\"
-    \"ORDER\" ||--o{ ORDERLINEITEM : \"1-to-many\"
-    ORDERLINEITEM }o--|| PRODUCT : \"many-to-1\"
-    USER ||--|| USERPROFILE : \"1-to-1\"
