@@ -1,18 +1,15 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block page_header %}
   <div class="container header-container">
-    <div class="row">
-      <div class="col"></div>
-    </div>
+    <div class="row"><div class="col"></div></div>
   </div>
 {% endblock %}
 
 {% block content %}
   <div class="container">
-    <!-- Full-Width Headline, Left Aligned -->
+    <!-- Hero headline is self-descriptive -->
     <div class="row">
       <div class="col-12">
         <h1 class="main-page-content display-4 logo-font text-light text-left">
@@ -21,9 +18,8 @@
       </div>
     </div>
 
-    <!-- Two Column Layout -->
     <div class="row mt-4">
-      <!-- Left Column: Description and News Section -->
+      <!-- Left Column: Description & News -->
       <div class="col-12 col-md-6">
         <h4 class="text-white">
           Ramen Nakama is a Bristol-based monthly ramen delivery service, bringing you the best ramen in the city.
@@ -31,55 +27,67 @@
           We source the freshest ingredients and prepare each bowl with care, ensuring that every bite is a taste of Japan.
           Please keep an eye on our news section for updates on our menu and forthcoming events.
         </h4>
-        <!-- News Section -->
-        <div class="news-section mt-5">
-          <h4 class="text-white"><strong>Ramen Nakama News</strong></h4>
+
+        {# News region with a label #}
+        <section class="news-section mt-5" role="region" aria-labelledby="news-heading">
+          <h4 id="news-heading" class="text-white"><strong>Ramen Nakama News</strong></h4>
           {% if news %}
             {% for item in news|slice:":1" %}
               <div class="card bg-dark text-black mb-3">
                 {% if item.image %}
-                  <img src="{{ item.image.url }}" alt="{{ item.title }}" class="card-img-top img-fluid">
+                  <img src="{{ item.image.url }}"
+                       alt="{{ item.title }}"
+                       class="card-img-top img-fluid"
+                       aria-describedby="news-{{ item.pk }}-desc">
                 {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">{{ item.title }}</h5>
-                  <p class="card-text">{{ item.content|truncatewords:30 }}</p>
-                  <a href="{% url 'news-archive' %}" class="btn btn-outline-black">Read More</a>
+                  <p id="news-{{ item.pk }}-desc" class="card-text">
+                    {{ item.content|truncatewords:30 }}
+                  </p>
+                  <a href="{% url 'news-archive' %}"
+                     class="btn btn-outline-black"
+                     aria-label="Read more news and view archive">
+                    Read More
+                  </a>
                 </div>
               </div>
             {% endfor %}
           {% else %}
             <p class="text-white">No news available at this time.</p>
           {% endif %}
-        </div>
-        
+        </section>
       </div>
-      
-      <!-- Right Column: Order Status and Shop Now Container -->
+
+      <!-- Right Column: Order Status & Shop Now -->
       <div class="col-12 col-md-6">
-        <div class="order-status-container">
+        <div class="order-status-container"
+             role="region"
+             aria-labelledby="order-status-heading"
+             aria-live="polite">
           <div class="row align-items-center">
-            <!-- Order status text (approx. 66% width) -->
             <div class="col-8">
               {% if order_window %}
-                <div class="order-status-message">
+                <div id="order-status-heading" class="order-status-message">
                   {{ order_window.ordering_message }}
                 </div>
               {% else %}
-                <div class="order-status-message">
+                <div id="order-status-heading" class="order-status-message">
                   Watch this space for our next ordering window!
                 </div>
               {% endif %}
             </div>
-            <!-- Circular Shop Now button (approx. 34% width) -->
             <div class="col-4 text-right">
-              <a href="{% url 'products' %}" class="shop-now-circle text-uppercase text-center">
+              <a href="{% url 'products' %}"
+                 class="shop-now-circle text-uppercase text-center"
+                 aria-label="Shop now — Slurp Now!">
                 <strong>Slurp Now!</strong>
               </a>
             </div>
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 {% endblock %}

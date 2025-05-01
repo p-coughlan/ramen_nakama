@@ -62,7 +62,7 @@
   <header class="container-fluid fixed-top">
     <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-        <a href="{% url 'home' %}" class="nav-link main-logo-link">
+        <a href="{% url 'home' %}" class="nav-link main-logo-link" aria-label="Go to Ramen Nakama homepage">
           <h1 class="main-logo logo-font my-0"><strong>Ramen</strong> Nakama</h1>
         </a>
       </div>
@@ -86,7 +86,7 @@
         <ul class="list-inline list-unstyled text-center text-lg-right my-0">
           <li class="list-inline-item dropdown">
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+              aria-expanded="false" aria-label="Account options">
               <div class="text-center">
                 <div><i class="fas fa-user fa-lg"></i></div>
                 <p class="my-0">My Account</p>
@@ -107,7 +107,7 @@
           </li>
           <li class="list-inline-item">
             <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-               href="{% url 'view_bag' %}">
+               href="{% url 'view_bag' %} " aria-label="View shopping bag">
               <div class="text-center">
                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                 <p class="my-0">
@@ -191,10 +191,10 @@
         </div>
         {# Social Media Links Column: Always visible, centered on mobile and right-aligned on large screens #}
         <div class="footer-text col-12 col-lg-4 text-center text-light mt-3 mt-lg-0">
-          <a href="https://www.instagram.com/ramen.nakama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mx-2">
+          <a href="https://www.instagram.com/ramen.nakama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mx-2" aria-label="Instagram">
             <i class="fab fa-instagram fa-2x text-light"></i>
           </a>
-          <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="mx-2">
+          <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="mx-2" aria-label="WhatsApp">
             <i class="fab fa-whatsapp fa-2x text-light"></i>
           </a>
         </div>

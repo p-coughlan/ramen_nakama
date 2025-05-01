@@ -193,6 +193,41 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 ---
 
 ## Installation & Setup
+
+# Deployment
+
+1. Clone the repository:
+
+```
+git clone https://github.com/p-coughlan/ramen_nakama.git
+cd ramen-nakama
+```
+
+2. Create and activate a virtual environment:
+
+```
+python -m venv venv
+source venv/bin/activate # On Mac
+venv\Scripts\activate # On Windows
+```
+
+3. Install the required dependencies: `pip install -r requirements.txt`
+4. Set up the database: `python manage.py migrate`
+5. Run the development server: `python manage.py runserver`
+
+Your app should now be running locally at `http://127.0.0.1:8000/`.
+
+## Heroku Deployment
+
+1. Install the Heroku CLI if you haven't already.
+2. Log in to Heroku: `heroku login`
+3. Create a new Heroku app: `heroku create`
+4. Push your code to Heroku: `git push heroku main`
+5. Set up the Heroku database: `heroku run python manage.py migrate`
+6. Open your deployed app: `heroku open`
+
+Your app should now be live on Heroku!
+
 ---
 
 ## Usage Instructions
@@ -202,9 +237,11 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 1. **Register & Log In**  
    - Click “My Account” in the navbar.  
    - Choose **Register** (or **Login** if you already have an account).  
-   - Fill out the signup form (username, email, password), then verify via the confirmation email.  
+   - Fill out the signup form (username, email, password), then verify via the confirmation email.
+   - In 'My Profile', users can update personal information, view past orders, edit and delete existing reviews. If reviews are edited they will then need to be approved by the superuser in Django admin.
 
    <img src="media/readme/signup.jpg" alt="Signup Form" width="600">
+   <img src="media/readme/profile.jpg" alt="User profile view" width="600">
 
 2. **Browse & Search**  
    - From the homepage, click **Shop All** or to filter by price/rating/category or all products.
@@ -571,7 +608,7 @@ This modular structure leverages Django’s auth system, cleanly separates conce
   Django admin is currently notifying the user that we are 1 hour ahead of server time - correct this.
   
 - **Mobile Optimization:**  
-  Further refine mobile UX beyond Bootstrap defaults.
+  Further refine mobile UX.
   
 - **User Account Features:**  
   Implement wishlists and order tracking.
@@ -579,6 +616,17 @@ This modular structure leverages Django’s auth system, cleanly separates conce
 ---
 
 ## Other Future Improvements
+
+- **Integrate Instagram Feed:**
+
+  - **Goal:** Display the store owner’s latest Instagram photos on the site to boost social engagement and keep content fresh.  
+    - **Approach:**  
+    - **Embed Widget:** Use Instagram’s official embed code for a simple “Follow us” gallery.  
+    - **API Fetch:** Periodically pull recent posts via Instagram’s API and show them as thumbnails.  
+  - **UX Notes:**  
+    - Make it responsive so images rearrange neatly on mobile.  
+    - Include a clear “Follow on Instagram” link beneath the feed.  
+
 
 - **New Content Types:**  
   Ideas for Mailing List integration and additional user feedback models.
