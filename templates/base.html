@@ -188,7 +188,7 @@
     <div class="container">
       <div class="row align-items-center">
         {# Reviews Column: Hidden on mobile, visible on large screens #}
-        <div class="col-12 col-lg-8 d-none d-lg-block">
+        <div class="col-12 col-lg-10 d-none d-lg-block">
           {% if approved_reviews %}
             <div id="review-ticker" class="footer-text py-2">
               {% for review in approved_reviews %}
@@ -202,7 +202,7 @@
           {% endif %}
         </div>
         {# Social Media Links Column: Always visible, centered on mobile and right-aligned on large screens #}
-        <div class="footer-text col-12 col-lg-4 text-center text-light mt-3 mt-lg-0">
+        <div class="footer-text col-12 col-lg-2 text-center text-light mt-3 mt-lg-0">
           <a href="https://www.instagram.com/ramen.nakama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mx-2" aria-label="Instagram">
             <i class="fab fa-instagram fa-2x text-light"></i>
           </a>
@@ -215,7 +215,7 @@
   </footer>
 
   {# POST-LOAD SCRIPTS: Review ticker and toasts #}
-  {% block postloadjs %}
+{% block postloadjs %}
   <script type="text/javascript">
     $('.toast').toast('show');
   </script>
@@ -223,7 +223,11 @@
     $(document).ready(function() {
       var items = $('#review-ticker .review-item');
       var current = 0;
+
       function showNextReview() {
+        // Clear any queued animations and jump to end state
+        items.stop(true, true);
+        // Fade out current, then show next
         items.eq(current).fadeOut(1000, function() {
           current = (current + 1) % items.length;
           items.eq(current).fadeIn(1000);
@@ -238,14 +242,15 @@
         if (document.hidden) {
           clearInterval(tickerInterval);
         } else {
-          // Clear just in case, then restart
-          clearInterval(tickerInterval);
+          // Ensure only the current review is visible before restarting
+          items.hide().eq(current).show();
           tickerInterval = setInterval(showNextReview, 5000);
         }
       });
     });
   </script>
 {% endblock %}
+
 
 </body>
 </html>

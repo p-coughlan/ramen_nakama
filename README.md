@@ -144,15 +144,15 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 ### Screenshots
 
 #### Desktop View  
-![Desktop Homepage](assets/images/desktop_homepage.png)  
+![Desktop Homepage](media/readme/responsive-desktop.jpg)  
 *Homepage at 1440px showing hero, news card, and “Slurp Now” CTA.*
 
 #### Tablet View  
-![Tablet Layout](assets/images/tablet_layout.png)  
+![Tablet Layout](media/readme/responsive-tablet.jpg)  
 *Two‑column news and features on a tablet‑sized viewport.*
 
 #### Mobile View  
-![Mobile Homepage](assets/images/mobile_homepage.png)  
+![Mobile Homepage](media/readme/responsive-mobile.jpg)  
 *Single‑column flow on mobile, central CTAs and easy scroll.*
 
 ---
