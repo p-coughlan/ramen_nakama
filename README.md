@@ -36,15 +36,14 @@ The app is deployed on **Heroku**, uses **AWS S3** for static/media hosting, and
   - [For Customers](#for-customers)
   - [For Staff/Admin](#for-staffadmin)
 - [Testing](#testing)
-- [Testing Table](#testing-table)
 - [User Stories](#user-stories)
 - [Design Considerations](#design-considerations)
 - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+- [Data Models](#data-models)
 - [Essential Future Improvements](#essential-future-improvements)
 - [Other Future Improvements](#other-future-improvements)
 - [Troubleshooting Highlights](#troubleshooting-highlights)
 - [References and Credits](#references-and-credits)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ---
@@ -131,14 +130,6 @@ Ramen Nakama uses the Skia CC family (via Adobe Fonts) to reinforce its brand
 - **Container Width:** Max‑width set to 80% on extra‑large screens (≥1200px).  
 - **Header Padding:** Adjusts between desktop and mobile to accommodate fixed elements.  
 - **Button & Text Scaling:** Font sizes and padding adjust via media queries to ensure tap‑target accessibility on mobile.  
-
-
-### Responsive Previews
-
-| Desktop View | Tablet View | Mobile View |
-| :---: | :---: | :---: |
-| <img src="media/readme/responsive-desktop.jpg" alt="Desktop Homepage" height="300"> | <img src="media/readme/responsive-tablet.jpg" alt="Tablet Homepage" height="300"> | <img src="media/readme/responsive-mobile.jpg" alt="Mobile Homepage" height="300"> |
-| *At 1440px with full two‑column layout.* | *At 768px with stacked columns.* | *At 375px single‑column flow.* |
 
 
 ### Screenshots
@@ -322,20 +313,10 @@ Your app should now be live on Heroku!
    <img src="media/readme/orders.jpg" alt="Order management in Django admin" width="600">
    <img src="media/readme/orders2.jpg" alt="Order management in Django admin" width="600">
    
-   
-
-
-
-<img src="media/readme/admin_products.png" alt="Admin product management" width="800">  
-*Admin interface for creating and editing products.*  
-
-<img src="media/readme/admin_news.png" alt="Admin news management" width="800">  
-*Admin view for publishing news items and managing the archive.*  
-
 
 ---
 
-## Manual Testing
+## Testing
 
 Ramen Nakama was manually exercised across all major features, devices, and browsers to ensure a smooth user experience. The table below summarizes each scenario, the expected behavior, the actual result, and any pertinent notes.
 
@@ -787,6 +768,32 @@ This modular structure leverages Django’s auth system, cleanly separates conce
           return "Ordering is currently closed."
       ```
 
+14. **Reviews stacking and disappearing after tab focus change**  
+    - **Problem:** When returning to the tab after a pause, multiple fade animations queue up, causing reviews to stack and then vanish one by one.  
+    - **Diagnosis:** jQuery’s `.fadeIn()`/`.fadeOut()` calls were being queued during the hidden/visible state changes, so on resume all pending animations ran in quick succession.  
+    - **Fix:** Clear any queued animations before each fade and reset visibility on resume. In your `postloadjs` block, update the ticker script to:
+
+    ```javascript
+    function showNextReview() {
+      // Stop and clear any queued animations on all items
+      items.stop(true, true);
+      items.eq(current).fadeOut(1000, function() {
+        current = (current + 1) % items.length;
+        items.eq(current).fadeIn(1000);
+      });
+    }
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        clearInterval(tickerInterval);
+      } else {
+        // Reset all items visibility, ensure only the current is shown
+        items.hide().eq(current).show();
+        tickerInterval = setInterval(showNextReview, 5000);
+      }
+    });
+    ```
+
 ---
 
 ## References & Credits
@@ -857,11 +864,6 @@ This modular structure leverages Django’s auth system, cleanly separates conce
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## Acknowledgements
 
