@@ -36,7 +36,7 @@ DEBUG = 'DEVELOPMENT' in os.environ # commented out for 404
 ALLOWED_HOSTS = [
     '127.0.0.1', # vs code preview
     'localhost', # listen for stripe webhooks
-    'milestone-four-ff783f75758e.herokuapp.com' # heroku app
+    'ramen-nakama-dd9af76c6755.herokuapp.com' # heroku app
 ]
 
 
