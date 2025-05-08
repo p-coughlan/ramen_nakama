@@ -312,7 +312,12 @@ Your app should now be live on Heroku!
    - Key information such as: order number, user profile, date, name, email address, full postal address, delivery cost, order total, grand total and Stripe pid.  
    <img src="media/readme/orders.jpg" alt="Order management in Django admin" width="600">
    <img src="media/readme/orders2.jpg" alt="Order management in Django admin" width="600">
-   
+
+### 404 Page
+
+  A 404 page, also known as an "error page" or "Page Not Found" page, is a web page displayed by a server when a user tries to access a URL that doesn't exist or the server can't find. It essentially indicates that the requested resource (webpage) could not be located. This can happen due to broken links, typos in the URL, or if the page was deleted or moved.  
+
+  <img src="media/readme/404.jpg" alt="404 page display" width="600">  
 
 ---
 
