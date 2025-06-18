@@ -1,4 +1,4 @@
-# Ramen Nakama
+# [Ramen Nakama](https://ramen-nakama-dd9af76c6755.herokuapp.com)
 
 <img src="media/ramen-responsive.jpg" alt="Ramen Nakama Homepage" width="1000">
 
@@ -21,7 +21,7 @@
 The app is deployed on **Heroku**, uses **AWS S3** for static/media hosting, and integrates **Stripe** for secure payment processing. Its responsive **Bootstrap**‑powered front end is supplemented with custom CSS for a distinctive look. Ramen Nakama extends Code Institute’s Boutique Ado template with bespoke models and workflows tailored to the demands of a modern ramen delivery service.
 
 
-[View Site Here](https://ramen-nakama-dd9af76c6755.herokuapp.com/)
+[View Site Here](https://ramen-nakama-dd9af76c6755.herokuapp.com)
 
 ---
 
