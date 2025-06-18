@@ -21,7 +21,7 @@
 The app is deployed on **Heroku**, uses **AWS S3** for static/media hosting, and integrates **Stripe** for secure payment processing. Its responsive **Bootstrap**‑powered front end is supplemented with custom CSS for a distinctive look. Ramen Nakama extends Code Institute’s Boutique Ado template with bespoke models and workflows tailored to the demands of a modern ramen delivery service.
 
 
-[View Site Here](https://milestone-four-ff783f75758e.herokuapp.com)
+[View Site Here](https://ramen-nakama-dd9af76c6755.herokuapp.com/)
 
 ---
 
